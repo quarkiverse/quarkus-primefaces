@@ -91,6 +91,24 @@ class PrimefacesProcessor {
         classNames.addAll(
                 collectClassesInPackage(combinedIndex, org.primefaces.util.Constants.class.getPackageName()));
         classNames.add(org.primefaces.expression.SearchExpressionUtils.class.getName());
+        reflectiveClass.produce(new ReflectiveClassBuildItem(true, false,
+                    org.primefaces.expression.SearchExpressionUtils.class.getName(),
+                    org.primefaces.util.AgentUtils.class.getName(),
+                    org.primefaces.util.BeanUtils.class.getName(),
+                    org.primefaces.util.CalendarUtils.class.getName(),
+                    org.primefaces.util.ChartUtils.class.getName(),
+                    org.primefaces.util.ComponentTraversalUtils.class.getName(),
+                    org.primefaces.util.ComponentUtils.class.getName(),
+                    org.primefaces.util.CompositeUtils.class.getName(),
+                    org.primefaces.util.ELUtils.class.getName(),
+                    org.primefaces.util.EscapeUtils.class.getName(),
+                    org.primefaces.util.FileUploadUtils.class.getName(),
+                    org.primefaces.util.GridLayoutUtils.class.getName(),
+                    org.primefaces.util.IOUtils.class.getName(),
+                    org.primefaces.util.LangUtils.class.getName(),
+                    org.primefaces.util.LocaleUtils.class.getName(),
+                    org.primefaces.util.ResourceUtils.class.getName(),
+                    org.primefaces.util.SecurityUtils.class.getName()));
 
         // methods
         reflectiveClass.produce(new ReflectiveClassBuildItem(true, false, classNames.toArray(new String[classNames.size()])));
