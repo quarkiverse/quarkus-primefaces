@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>io.quarkiverse.primefaces</groupId>
+        <artifactId>quarkus-primefaces-ecosystem</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <groupId>io.quarkiverse.primefaces</groupId>
+    <artifactId>quarkus-primefaces-extensions-parent</artifactId>
+    <packaging>pom</packaging>
+    <name>Quarkus Primefaces Extensions - Parent</name>
+    <modules>
+        <module>deployment</module>
+        <module>runtime</module>
+    </modules>
+    <profiles>
+        <profile>
+            <id>it</id>
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>!true</value>
+                </property>
+            </activation>
+            <modules>
+                <module>integration-tests</module>
+            </modules>
+        </profile>
+    </profiles>
+</project>

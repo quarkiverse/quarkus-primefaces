@@ -1,0 +1,14 @@
+---
+name: "PrimeFaces" 
+artifact: ${project.groupId}:${project.artifactId}:${project.version} 
+metadata:
+  short-name: "primefaces" 
+  keywords: 
+  - "primefaces"
+  - "jsf"
+  - "faces"
+  - "myfaces"
+  categories: 
+  - "web"
+  status: "stable" 
+  guide: "https://quarkiverse.github.io/quarkiverse-docs/quarkus-primefaces/dev/" 
