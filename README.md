@@ -43,6 +43,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="http://tandraschko.blogspot.de/"><img src="https://avatars.githubusercontent.com/u/2485545?v=4?s=100" width="100px;" alt="Thomas Andraschko"/><br /><sub><b>Thomas Andraschko</b></sub></a><br /><a href="https://github.com/quarkiverse/quarkus-primefaces/commits?author=tandraschko" title="Code">💻</a> <a href="#maintenance-tandraschko" title="Maintenance">🚧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://melloware.com"><img src="https://avatars.githubusercontent.com/u/4399574?v=4?s=100" width="100px;" alt="Melloware"/><br /><sub><b>Melloware</b></sub></a><br /><a href="https://github.com/quarkiverse/quarkus-primefaces/commits?author=melloware" title="Code">💻</a> <a href="#maintenance-melloware" title="Maintenance">🚧</a></td>
     </tr>
   </tbody>
 </table>
