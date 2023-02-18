@@ -94,6 +94,9 @@
         <skipITs>false</skipITs>
         <quarkus.package.type>native</quarkus.package.type>
         <quarkus.native.builder-image>mandrel</quarkus.native.builder-image>
+<quarkus.native.additional-build-args>
+                    --trace-class-initialization=org.apache.xmlbeans.XmlOptions
+                </quarkus.native.additional-build-args>
       </properties>
     </profile>
   </profiles>

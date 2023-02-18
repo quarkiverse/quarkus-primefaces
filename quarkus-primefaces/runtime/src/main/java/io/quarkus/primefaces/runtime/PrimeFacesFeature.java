@@ -7,13 +7,11 @@ import org.graalvm.nativeimage.impl.RuntimeClassInitializationSupport;
 
 public class PrimeFacesFeature implements Feature {
 
-    private final static String REASON = "Quarkus runtime init for PrimeFaces";
+    private final static String REASON = "Quarkus runtime initialization for PrimeFaces";
 
     @Override
     public void afterRegistration(AfterRegistrationAccess access) {
         final RuntimeClassInitializationSupport runtimeInit = ImageSingletons.lookup(RuntimeClassInitializationSupport.class);
-
-        runtimeInit.initializeAtRunTime(org.primefaces.util.ExcelStylesManager.class.getName(), REASON);
 
         // TODO: being fixed in MyFaces 2.3-M8
         runtimeInit.initializeAtRunTime(ViewScopeBeanHolder.class, REASON);
