@@ -112,8 +112,7 @@ class PrimefacesProcessor {
         // neither
         reflectiveClass.produce(new ReflectiveClassBuildItem(false, false,
                 org.primefaces.config.PrimeEnvironment.class.getName(),
-                org.primefaces.util.MessageFactory.class.getName(),
-                com.lowagie.text.pdf.MappedRandomAccessFile.class.getName()));
+                org.primefaces.util.MessageFactory.class.getName()));
     }
 
     @BuildStep
@@ -127,10 +126,11 @@ class PrimefacesProcessor {
         ArtifactKey pf = ArtifactKey.ga("org.primefaces", "primefaces");
 
         // Apache Commons FileUpload is not needed as native upload mode is used
-        index.produce(new RemovedResourceBuildItem(pf, Set.of(org.primefaces.component.fileupload.CommonsFileUploadDecoder.class.getName(),
-                org.primefaces.model.file.CommonsUploadedFile.class.getName(),
-                org.primefaces.webapp.MultipartRequest.class.getName(),
-                org.primefaces.webapp.filter.FileUploadFilter.class.getName())));
+        index.produce(new RemovedResourceBuildItem(pf,
+                Set.of(org.primefaces.component.fileupload.CommonsFileUploadDecoder.class.getName(),
+                        org.primefaces.model.file.CommonsUploadedFile.class.getName(),
+                        org.primefaces.webapp.MultipartRequest.class.getName(),
+                        org.primefaces.webapp.filter.FileUploadFilter.class.getName())));
     }
 
     public List<String> collectClassesInPackage(CombinedIndexBuildItem combinedIndex, String packageName) {
