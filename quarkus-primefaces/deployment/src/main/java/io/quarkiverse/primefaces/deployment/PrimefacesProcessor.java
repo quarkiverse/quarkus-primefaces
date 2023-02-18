@@ -38,7 +38,8 @@ class PrimefacesProcessor {
 
     @BuildStep
     void indexTransitiveDependencies(BuildProducer<IndexDependencyBuildItem> index) {
-        index.produce(new IndexDependencyBuildItem("com.googlecode.owasp-java-html-sanitizer", "owasp-java-html-sanitizer"));
+        index.produce(new IndexDependencyBuildItem("com.googlecode.owasp-java-html-sanitizer",
+                "owasp-java-html-sanitizer"));
         index.produce(new IndexDependencyBuildItem("io.nayuki", "qrcodegen"));
     }
 
@@ -108,7 +109,8 @@ class PrimefacesProcessor {
                 org.primefaces.util.LangUtils.class.getName(),
                 org.primefaces.util.LocaleUtils.class.getName(),
                 org.primefaces.util.ResourceUtils.class.getName(),
-                org.primefaces.util.SecurityUtils.class.getName()));
+                org.primefaces.util.SecurityUtils.class.getName(),
+                org.primefaces.component.fileupload.NativeFileUploadDecoder.class.getName()));
 
         // neither
         reflectiveClass.produce(new ReflectiveClassBuildItem(false, false,
