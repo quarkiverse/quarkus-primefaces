@@ -1,7 +1,6 @@
 package io.quarkiverse.primefaces.deployment;
 
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.jboss.jandex.ClassInfo;
@@ -9,17 +8,18 @@ import org.primefaces.util.Constants;
 
 import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
+import io.quarkus.deployment.annotations.ExecutionTime;
+import io.quarkus.deployment.annotations.Record;
 import io.quarkus.deployment.builditem.AdditionalApplicationArchiveMarkerBuildItem;
 import io.quarkus.deployment.builditem.CombinedIndexBuildItem;
 import io.quarkus.deployment.builditem.FeatureBuildItem;
 import io.quarkus.deployment.builditem.IndexDependencyBuildItem;
 import io.quarkus.deployment.builditem.NativeImageFeatureBuildItem;
-import io.quarkus.deployment.builditem.RemovedResourceBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.NativeImageResourceBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.NativeImageResourceBundleBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.ReflectiveClassBuildItem;
-import io.quarkus.maven.dependency.ArtifactKey;
 import io.quarkus.primefaces.runtime.PrimeFacesFeature;
+import io.quarkus.primefaces.runtime.PrimeFacesRecorder;
 import io.quarkus.undertow.deployment.ServletInitParamBuildItem;
 
 class PrimefacesProcessor {
@@ -88,7 +88,8 @@ class PrimefacesProcessor {
     }
 
     @BuildStep
-    void registerForReflection(BuildProducer<ReflectiveClassBuildItem> reflectiveClass) {
+    @Record(ExecutionTime.STATIC_INIT)
+    void registerForReflection(PrimeFacesRecorder recorder, BuildProducer<ReflectiveClassBuildItem> reflectiveClass) {
         // All utilities
         reflectiveClass.produce(new ReflectiveClassBuildItem(true, false,
                 org.primefaces.expression.SearchExpressionUtils.class.getName(),
@@ -119,18 +120,6 @@ class PrimefacesProcessor {
     void enforceInitParams(BuildProducer<ServletInitParamBuildItem> initParam) {
         // only native uploading is supported no need for Commons FileUpload
         initParam.produce(new ServletInitParamBuildItem(Constants.ContextParams.UPLOADER, "native"));
-    }
-
-    @BuildStep
-    void removeUnusedClasses(BuildProducer<RemovedResourceBuildItem> index) {
-        ArtifactKey pf = ArtifactKey.ga("org.primefaces", "primefaces");
-
-        // Apache Commons FileUpload is not needed as native upload mode is used
-        index.produce(new RemovedResourceBuildItem(pf,
-                Set.of(org.primefaces.component.fileupload.CommonsFileUploadDecoder.class.getName(),
-                        org.primefaces.model.file.CommonsUploadedFile.class.getName(),
-                        org.primefaces.webapp.MultipartRequest.class.getName(),
-                        org.primefaces.webapp.filter.FileUploadFilter.class.getName())));
     }
 
     public List<String> collectClassesInPackage(CombinedIndexBuildItem combinedIndex, String packageName) {

@@ -8,6 +8,8 @@ import org.jboss.jandex.ClassInfo;
 
 import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
+import io.quarkus.deployment.annotations.ExecutionTime;
+import io.quarkus.deployment.annotations.Record;
 import io.quarkus.deployment.builditem.AdditionalApplicationArchiveMarkerBuildItem;
 import io.quarkus.deployment.builditem.CombinedIndexBuildItem;
 import io.quarkus.deployment.builditem.FeatureBuildItem;
@@ -17,6 +19,8 @@ import io.quarkus.deployment.builditem.nativeimage.NativeImageResourceBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.NativeImageResourceBundleBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.ReflectiveClassBuildItem;
 import io.quarkus.primefaces.extensions.runtime.PrimeFacesExtensionsFeature;
+import io.quarkus.primefaces.extensions.runtime.PrimeFacesExtensionsRecorder;
+import io.quarkus.primefaces.runtime.PrimeFacesRecorder;
 
 class PrimefacesExtensionsProcessor {
 
@@ -64,7 +68,8 @@ class PrimefacesExtensionsProcessor {
     }
 
     @BuildStep
-    void registerForReflection(BuildProducer<ReflectiveClassBuildItem> reflectiveClass,
+    @Record(ExecutionTime.STATIC_INIT)
+    void registerForReflection(PrimeFacesExtensionsRecorder recorder, BuildProducer<ReflectiveClassBuildItem> reflectiveClass,
             CombinedIndexBuildItem combinedIndex) {
         final List<String> classNames = new ArrayList<>();
         // All utilities
