@@ -109,7 +109,10 @@ class PrimefacesProcessor {
                 org.primefaces.util.LangUtils.class.getName(),
                 org.primefaces.util.LocaleUtils.class.getName(),
                 org.primefaces.util.ResourceUtils.class.getName(),
-                org.primefaces.util.SecurityUtils.class.getName(),
+                org.primefaces.util.SecurityUtils.class.getName()));
+
+        // components that need special treatment
+        reflectiveClass.produce(new ReflectiveClassBuildItem(true, false,
                 org.primefaces.component.fileupload.NativeFileUploadDecoder.class.getName()));
 
         // neither

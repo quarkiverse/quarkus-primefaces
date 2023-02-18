@@ -4,7 +4,7 @@ import org.graalvm.nativeimage.hosted.Feature;
 
 public class PrimeFacesExtensionsFeature implements Feature {
 
-    private final static String REASON = "Quarkus runtime initialization for PrimeFaces Extensions";
+    private final static String REASON = "PrimeFaces Extensions runtime initialization";
 
     @Override
     public String getDescription() {
