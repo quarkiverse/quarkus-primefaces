@@ -17,6 +17,15 @@ A Quarkus extension that lets you utilize [primefaces](https://www.primefaces.or
 
 Read the full [primefaces documentation](https://quarkiverse.github.io/quarkiverse-docs/quarkus-primefaces/dev/).
 
+## Versioning
+
+The versioning of this extension will follow the pattern `[quarkus.version].[primefaces.version].[patch]`. For example:
+
+| Version | Explanation |
+| --- | --- |
+| 2.12.1 | Quarkus 2 (EE8), PrimeFaces 12, Revision 1 |
+| 3.12.0 | Quarkus 3 (EEE10), PrimeFaces 12, Revision 0 |
+
 ### Prerequisite
 
 * Create or use an existing Quarkus application
