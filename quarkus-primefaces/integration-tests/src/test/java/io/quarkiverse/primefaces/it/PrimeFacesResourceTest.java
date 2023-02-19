@@ -18,7 +18,7 @@ import io.quarkus.test.common.http.TestHTTPResource;
 import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest
-public class PrimefacesResourceTest {
+public class PrimeFacesResourceTest {
 
     @TestHTTPResource
     URL url;

@@ -7,7 +7,7 @@
         <version>2.12.1-SNAPSHOT</version>
     </parent>
     <artifactId>quarkus-primefaces-deployment</artifactId>
-    <name>Quarkus Primefaces - Deployment</name>
+    <name>Quarkus PrimeFaces - Deployment</name>
     <dependencies>
         <dependency>
             <groupId>io.quarkus</groupId>

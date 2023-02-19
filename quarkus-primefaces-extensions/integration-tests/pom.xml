@@ -7,7 +7,7 @@
         <version>2.12.1-SNAPSHOT</version>
     </parent>
     <artifactId>quarkus-primefaces-extensions-integration-tests</artifactId>
-    <name>Quarkus Primefaces Extensions - Integration Tests</name>
+    <name>Quarkus PrimeFaces Extensions - Integration Tests</name>
     <properties>
         <skipITs>true</skipITs>
     </properties>

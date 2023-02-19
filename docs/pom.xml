@@ -8,7 +8,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>quarkus-primefaces-docs</artifactId>
-    <name>Quarkus Primefaces - Documentation</name>
+    <name>Quarkus PrimeFaces - Documentation</name>
     <dependencies>
         <!-- Make sure the doc is built after the other artifacts -->
         <dependency>

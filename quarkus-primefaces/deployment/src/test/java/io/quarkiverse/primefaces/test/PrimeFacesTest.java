@@ -8,7 +8,7 @@ import org.junit.jupiter.api.extension.RegisterExtension;
 
 import io.quarkus.test.QuarkusUnitTest;
 
-public class PrimefacesTest {
+public class PrimeFacesTest {
 
     // Start unit test with your extension loaded
     @RegisterExtension

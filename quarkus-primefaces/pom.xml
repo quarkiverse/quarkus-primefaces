@@ -9,7 +9,7 @@
     <groupId>io.quarkiverse.primefaces</groupId>
     <artifactId>quarkus-primefaces-parent</artifactId>
     <packaging>pom</packaging>
-    <name>Quarkus Primefaces - Parent</name>
+    <name>Quarkus PrimeFaces - Parent</name>
     <modules>
         <module>deployment</module>
         <module>runtime</module>

@@ -18,27 +18,9 @@
  */
 package io.quarkus.primefaces.extensions.runtime;
 
-import java.lang.annotation.Annotation;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
-
-import org.apache.myfaces.util.lang.ClassUtils;
-
 import io.quarkus.runtime.annotations.Recorder;
 
 @Recorder
 public class PrimeFacesExtensionsRecorder {
-    public static final Map<Class<? extends Annotation>, Set<Class<?>>> ANNOTATED_CLASSES = new LinkedHashMap<>();
-
-    @SuppressWarnings("unchecked") //cast to (Class<? extends Annotation>)
-    public void registerAnnotatedClass(String annotationName, String clazzName) {
-        Class<? extends Annotation> annotation = (Class<? extends Annotation>) ClassUtils.simpleClassForName(annotationName);
-        Class<?> clazz = ClassUtils.simpleClassForName(clazzName);
-
-        Set<Class<?>> classes = ANNOTATED_CLASSES.computeIfAbsent(annotation, $ -> new HashSet<>());
-        classes.add(clazz);
-    }
 
 }
