@@ -1,4 +1,4 @@
-# Quarkus Primefaces
+# Quarkus PrimeFaces
 [![Version](https://img.shields.io/maven-central/v/io.quarkiverse.primefaces/quarkus-primefaces?logo=apache-maven&style=flat-square)](https://search.maven.org/artifact/io.quarkiverse.primefaces/quarkus-primefaces)
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square)](https://opensource.org/licenses/Apache-2.0)
