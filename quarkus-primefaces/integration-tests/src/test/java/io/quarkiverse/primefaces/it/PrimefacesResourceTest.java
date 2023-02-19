@@ -50,4 +50,11 @@ public class PrimefacesResourceTest {
         assertThat(datatable).isNotNull();
         assertThat(datatable.getByXPath("//tr[contains(@class,'ui-datatable-selectable')]")).hasSize(10);
     }
+
+    @Test
+    public void shouldAllowTemplate() throws Exception {
+        final HtmlPage page = webClient.getPage(url + "/accessibility.xhtml");
+        final String title = page.getTitleText();
+        assertThat(title).isEqualTo("Accessibility");
+    }
 }
