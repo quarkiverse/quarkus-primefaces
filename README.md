@@ -17,6 +17,15 @@ A Quarkus extension that lets you utilize [primefaces](https://www.primefaces.or
 
 Read the full [primefaces documentation](https://quarkiverse.github.io/quarkiverse-docs/quarkus-primefaces/dev/).
 
+### Prerequisite
+
+* Create or use an existing Quarkus application
+* Add the primefaces extension with the [Quarkus CLI](https://quarkus.io/guides/cli-tooling):
+```bash
+quarkus ext add io.quarkiverse.primefaces:quarkus-primefaces
+quarkus ext add io.quarkiverse.primefaces:quarkus-primefaces-extensions
+```
+
 ## Versioning
 
 The versioning of this extension will follow the pattern `[quarkus.version].[primefaces.version].[patch]`. For example:
@@ -26,14 +35,8 @@ The versioning of this extension will follow the pattern `[quarkus.version].[pri
 | 2.12.1 | Quarkus 2 (EE8), PrimeFaces 12, Revision 1 |
 | 3.12.0 | Quarkus 3 (EEE10), PrimeFaces 12, Revision 0 |
 
-### Prerequisite
-
-* Create or use an existing Quarkus application
-* Add the primefaces extension with the [Quarkus CLI](https://quarkus.io/guides/cli-tooling):
-```bash
-quarkus ext add io.quarkiverse.primefaces:quarkus-primefaces
-quarkus ext add io.quarkiverse.primefaces:quarkus-primefaces-extensions
-```
+> **⚠️**
+NOTE: DataTable/TreeTable PDF exporting is removed in GraalVM Native Image mode due to complexities with the iText PDF library not supported in native mode.
 
 ## Showcase
 
