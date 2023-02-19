@@ -15,15 +15,26 @@ A Quarkus extension that lets you utilize [primefaces](https://www.primefaces.or
 
 ## Getting started
 
-Read the full [primefaces documentation](https://quarkiverse.github.io/quarkiverse-docs/quarkus-primefaces/dev/).
-
-### Prerequisite
-
 * Create or use an existing Quarkus application
 * Add the primefaces extension with the [Quarkus CLI](https://quarkus.io/guides/cli-tooling):
 ```bash
 quarkus ext add io.quarkiverse.primefaces:quarkus-primefaces
 quarkus ext add io.quarkiverse.primefaces:quarkus-primefaces-extensions
+```
+
+Or manually add to pom.xml:
+
+```xml
+<dependency>
+    <groupId>io.quarkiverse.primefaces</groupId>
+    <artifactId>quarkus-primefaces</artifactId>
+    <version>${primefaces-quarkus.version}</version>
+</dependency>
+<dependency>
+    <groupId>io.quarkiverse.primefaces</groupId>
+    <artifactId>quarkus-primefaces-extensions</artifactId>
+    <version>${primefaces-quarkus.version}</version>
+</dependency>
 ```
 
 ## Versioning
