@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.jboss.jandex.ClassInfo;
+import org.jboss.jandex.DotName;
 
 import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
@@ -74,9 +75,11 @@ class PrimefacesExtensionsProcessor {
             CombinedIndexBuildItem combinedIndex) {
         final List<String> classNames = new ArrayList<>();
         // All utilities
-        classNames.addAll(
-                collectClassesInPackage(combinedIndex,
-                        org.primefaces.extensions.util.Constants.class.getPackageName()));
+        classNames.addAll(collectClassesInPackage(combinedIndex,
+                org.primefaces.extensions.util.Constants.class.getPackageName()));
+
+        // All models
+        classNames.addAll(collectClassesInPackage(combinedIndex, "org.primefaces.extensions.model"));
 
         // methods
         reflectiveClass.produce(
@@ -88,11 +91,18 @@ class PrimefacesExtensionsProcessor {
     }
 
     public List<String> collectClassesInPackage(CombinedIndexBuildItem combinedIndex, String packageName) {
-        List<String> classes = combinedIndex.getIndex()
-                .getClassesInPackage(packageName)
-                .stream()
-                .map(ClassInfo::toString)
+        final List<String> classes = new ArrayList<>();
+        final List<DotName> packages = combinedIndex.getIndex().getSubpackages(packageName).stream()
                 .collect(Collectors.toList());
+        packages.add(DotName.createSimple(packageName));
+        for (DotName aPackage : packages) {
+            final List<String> packageClasses = combinedIndex.getIndex()
+                    .getClassesInPackage(aPackage)
+                    .stream()
+                    .map(ClassInfo::toString)
+                    .collect(Collectors.toList());
+            classes.addAll(packageClasses);
+        }
         return classes;
     }
 }
