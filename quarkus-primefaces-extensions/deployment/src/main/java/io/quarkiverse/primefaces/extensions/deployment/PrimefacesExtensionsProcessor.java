@@ -75,15 +75,14 @@ class PrimefacesExtensionsProcessor {
             CombinedIndexBuildItem combinedIndex) {
         final List<String> classNames = new ArrayList<>();
         // All utilities
-        classNames.addAll(collectClassesInPackage(combinedIndex,
-                org.primefaces.extensions.util.Constants.class.getPackageName()));
+        classNames.addAll(collectClassesInPackage(combinedIndex, "org.primefaces.extensions.util"));
 
         // All models
         classNames.addAll(collectClassesInPackage(combinedIndex, "org.primefaces.extensions.model"));
 
         // methods
         reflectiveClass.produce(
-                new ReflectiveClassBuildItem(true, false, classNames.toArray(new String[classNames.size()])));
+                new ReflectiveClassBuildItem(true, true, classNames.toArray(new String[classNames.size()])));
 
         // neither
         reflectiveClass.produce(new ReflectiveClassBuildItem(false, false,
