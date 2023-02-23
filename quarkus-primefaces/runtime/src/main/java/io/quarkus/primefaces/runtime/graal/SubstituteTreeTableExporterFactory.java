@@ -1,4 +1,4 @@
-package io.quarkus.primefaces.runtime;
+package io.quarkus.primefaces.runtime.graal;
 
 import javax.faces.FacesException;
 
