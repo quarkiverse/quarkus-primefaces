@@ -47,7 +47,7 @@ The versioning of this extension will follow the pattern `[quarkus.version].[pri
 | 3.12.0 | Quarkus 3 (EEE10), PrimeFaces 12, Revision 0 |
 
 > **⚠️**
-NOTE: DataTable/TreeTable PDF exporting is removed in GraalVM Native Image mode due to complexities with the iText PDF library not supported in native mode.
+NOTE: DataTable/TreeTable PDF exporting and FeedReader component are not supported in GraalVM Native Image mode due to complexities with their third party libraries iText and Rome.
 
 ## Showcase
 
