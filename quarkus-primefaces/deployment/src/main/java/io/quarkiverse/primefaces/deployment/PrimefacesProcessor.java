@@ -141,8 +141,7 @@ class PrimefacesProcessor {
 
     public List<String> collectClassesInPackage(CombinedIndexBuildItem combinedIndex, String packageName) {
         final List<String> classes = new ArrayList<>();
-        final List<DotName> packages = combinedIndex.getIndex().getSubpackages(packageName).stream()
-                .collect(Collectors.toList());
+        final List<DotName> packages = new ArrayList<>(combinedIndex.getIndex().getSubpackages(packageName));
         packages.add(DotName.createSimple(packageName));
         for (DotName aPackage : packages) {
             final List<String> packageClasses = combinedIndex.getIndex()
