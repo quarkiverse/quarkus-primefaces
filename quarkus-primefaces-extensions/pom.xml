@@ -6,7 +6,6 @@
         <artifactId>quarkus-primefaces-ecosystem</artifactId>
         <version>2.12.2-SNAPSHOT</version>
     </parent>
-    <groupId>io.quarkiverse.primefaces</groupId>
     <artifactId>quarkus-primefaces-extensions-parent</artifactId>
     <packaging>pom</packaging>
     <name>Quarkus PrimeFaces Extensions - Parent</name>
