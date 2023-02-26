@@ -33,3 +33,18 @@ WARNING: DataExporter PDF exporting not supported. OpenLibre PDF or iText both h
 WARNING: FeedReader not supported. Rome library uses JDOM XML parsing and we did not spend the time to investigate for a lightly used component.
 
 WARNING: EL expressions which use reflection may run into issues with things like List size() or Enum name() as they are not bean compliant method names. You might need to change your EL expression or add helper code to achieve what you want.
+
+== Versioning
+
+The versioning of this extension will follow the pattern `[quarkus.version].[primefaces.version].[patch]`. For example:
+
+[cols="1,1"]
+|===
+|Version |Explanation
+
+|2.12.1
+|Quarkus 2 (EE8), PrimeFaces 12, Revision 1
+
+|3.12.0
+| Quarkus 3 (EEE10), PrimeFaces 12, Revision 0
+|===
