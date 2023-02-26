@@ -20,6 +20,7 @@ import io.quarkus.deployment.builditem.NativeImageFeatureBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.NativeImageResourceBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.NativeImageResourceBundleBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.ReflectiveClassBuildItem;
+import io.quarkus.deployment.pkg.steps.NativeOrNativeSourcesBuild;
 import io.quarkus.primefaces.runtime.PrimeFacesFeature;
 import io.quarkus.primefaces.runtime.PrimeFacesRecorder;
 import io.quarkus.undertow.deployment.ServletInitParamBuildItem;
@@ -33,7 +34,7 @@ class PrimefacesProcessor {
         return new FeatureBuildItem(FEATURE);
     }
 
-    @BuildStep
+    @BuildStep(onlyIf = NativeOrNativeSourcesBuild.class)
     NativeImageFeatureBuildItem nativeImageFeature() {
         return new NativeImageFeatureBuildItem(PrimeFacesFeature.class);
     }
@@ -59,6 +60,7 @@ class PrimefacesProcessor {
                 "META-INF/primefaces-p.taglib.xml",
                 "META-INF/faces-config.xml",
                 "META-INF/web-fragment.xml",
+                "META-INF/web.xml",
                 "META-INF/LICENSE.txt",
                 "META-INF/NOTICE.txt",
                 "META-INF/services/org.primefaces.component.fileupload.FileUploadDecoder",
@@ -130,6 +132,10 @@ class PrimefacesProcessor {
         classNames.add(org.primefaces.component.fileupload.NativeFileUploadDecoder.class.getName());
         classNames.add(org.primefaces.application.exceptionhandler.ExceptionInfo.class.getName());
         classNames.add(org.primefaces.component.organigram.OrganigramHelper.class.getName());
+
+        // Barcode
+        classNames.add("javax.imageio.ImageIO");
+        classNames.add("org.krysalis.barcode4j.output.bitmap.ImageIOBitmapEncoder");
 
         // method reflection
         reflectiveClass.produce(
