@@ -98,6 +98,10 @@ class PrimefacesProcessor {
         final List<String> classNames = new ArrayList<>();
         classNames.addAll(List.of(
                 org.primefaces.expression.SearchExpressionUtils.class.getName(),
+                org.primefaces.expression.SearchExpressionFacade.class.getName(),
+                org.primefaces.clientwindow.PrimeClientWindowUtils.class.getName(),
+                org.primefaces.renderkit.RendererUtils.class.getName(),
+                org.primefaces.seo.JsonLD.class.getName(),
                 org.primefaces.util.AgentUtils.class.getName(),
                 org.primefaces.util.BeanUtils.class.getName(),
                 org.primefaces.util.CalendarUtils.class.getName(),
@@ -106,13 +110,16 @@ class PrimefacesProcessor {
                 org.primefaces.util.ComponentUtils.class.getName(),
                 org.primefaces.util.CompositeUtils.class.getName(),
                 org.primefaces.util.Constants.class.getName(),
+                org.primefaces.util.DynamicContentSrcBuilder.class.getName(),
                 org.primefaces.util.ELUtils.class.getName(),
                 org.primefaces.util.EscapeUtils.class.getName(),
                 org.primefaces.util.FileUploadUtils.class.getName(),
                 org.primefaces.util.GridLayoutUtils.class.getName(),
+                org.primefaces.util.HtmlSanitizer.class.getName(),
                 org.primefaces.util.IOUtils.class.getName(),
                 org.primefaces.util.LangUtils.class.getName(),
                 org.primefaces.util.LocaleUtils.class.getName(),
+                org.primefaces.util.MessageFactory.class.getName(),
                 org.primefaces.util.ResourceUtils.class.getName(),
                 org.primefaces.util.SecurityUtils.class.getName()));
 
@@ -122,6 +129,7 @@ class PrimefacesProcessor {
         // components that need special treatment
         classNames.add(org.primefaces.component.fileupload.NativeFileUploadDecoder.class.getName());
         classNames.add(org.primefaces.application.exceptionhandler.ExceptionInfo.class.getName());
+        classNames.add(org.primefaces.component.organigram.OrganigramHelper.class.getName());
 
         // method reflection
         reflectiveClass.produce(
@@ -130,7 +138,7 @@ class PrimefacesProcessor {
         // neither
         reflectiveClass.produce(new ReflectiveClassBuildItem(false, false,
                 org.primefaces.config.PrimeEnvironment.class.getName(),
-                org.primefaces.util.MessageFactory.class.getName()));
+                javax.faces.application.ViewExpiredException.class.getName()));
     }
 
     @BuildStep
