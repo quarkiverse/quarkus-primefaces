@@ -24,6 +24,10 @@
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-container-image-docker</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
             <artifactId>quarkus-junit5</artifactId>
             <scope>test</scope>
         </dependency>
@@ -64,6 +68,8 @@
                                 <native.image.path>${project.build.directory}/${project.build.finalName}-runner</native.image.path>
                                 <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
                                 <maven.home>${maven.home}</maven.home>
+                                <quarkus.http.host>localhost</quarkus.http.host>
+                                <quarkus.http.port>8081</quarkus.http.port>
                             </systemPropertyVariables>
                         </configuration>
                     </execution>
