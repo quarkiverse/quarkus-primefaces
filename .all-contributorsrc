@@ -25,6 +25,15 @@
         "code",
         "maintenance"
       ]
+    },
+    {
+      "login": "Karm",
+      "name": "Michal Karm Babacek",
+      "avatar_url": "https://avatars.githubusercontent.com/u/691097?v=4",
+      "profile": "https://karms.biz",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
