@@ -18,6 +18,7 @@ import io.quarkus.deployment.builditem.IndexDependencyBuildItem;
 import io.quarkus.deployment.builditem.NativeImageFeatureBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.NativeImageResourceBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.NativeImageResourceBundleBuildItem;
+import io.quarkus.deployment.builditem.nativeimage.NativeImageResourcePatternsBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.ReflectiveClassBuildItem;
 import io.quarkus.primefaces.extensions.runtime.PrimeFacesExtensionsFeature;
 import io.quarkus.primefaces.extensions.runtime.PrimeFacesExtensionsRecorder;
@@ -57,7 +58,9 @@ class PrimefacesExtensionsProcessor {
 
     @BuildStep
     void substrateResourceBuildItems(BuildProducer<NativeImageResourceBuildItem> nativeImageResourceProducer,
-            BuildProducer<NativeImageResourceBundleBuildItem> resourceBundleBuildItem) {
+            BuildProducer<NativeImageResourceBundleBuildItem> resourceBundleBuildItem,
+            BuildProducer<NativeImageResourcePatternsBuildItem> nativeImageResourcePatterns) {
+        // resources
         nativeImageResourceProducer.produce(new NativeImageResourceBuildItem(
                 "META-INF/maven/org.primefaces.extensions/primefaces-extensions/pom.properties",
                 "META-INF/primefaces-extensions.taglib.xml",
@@ -65,6 +68,12 @@ class PrimefacesExtensionsProcessor {
                 "META-INF/LICENSE.txt",
                 "META-INF/NOTICE.txt"));
 
+        // lib phone number
+        final NativeImageResourcePatternsBuildItem.Builder builder = NativeImageResourcePatternsBuildItem.builder();
+        builder.includeGlob("**/phonenumbers/data/**");
+        nativeImageResourcePatterns.produce(builder.build());
+
+        // message bundles
         resourceBundleBuildItem.produce(new NativeImageResourceBundleBuildItem("org.primefaces.extensions.Messages"));
     }
 
@@ -79,6 +88,9 @@ class PrimefacesExtensionsProcessor {
 
         // All models
         classNames.addAll(collectClassesInPackage(combinedIndex, "org.primefaces.extensions.model"));
+
+        // Monaco Editor
+        classNames.add(java.util.Locale.class.getName());
 
         // methods
         reflectiveClass.produce(
