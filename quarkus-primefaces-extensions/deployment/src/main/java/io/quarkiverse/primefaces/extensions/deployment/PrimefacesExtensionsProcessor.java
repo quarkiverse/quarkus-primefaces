@@ -68,9 +68,10 @@ class PrimefacesExtensionsProcessor {
                 "META-INF/LICENSE.txt",
                 "META-INF/NOTICE.txt"));
 
-        // lib phone number
+        // lib phone number and localized
         final NativeImageResourcePatternsBuildItem.Builder builder = NativeImageResourcePatternsBuildItem.builder();
         builder.includeGlob("**/phonenumbers/data/**");
+        builder.includeGlob("pfe-localized/**");
         nativeImageResourcePatterns.produce(builder.build());
 
         // message bundles
