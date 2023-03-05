@@ -132,6 +132,7 @@ class PrimefacesProcessor {
         classNames.add(org.primefaces.component.fileupload.NativeFileUploadDecoder.class.getName());
         classNames.add(org.primefaces.application.exceptionhandler.ExceptionInfo.class.getName());
         classNames.add(org.primefaces.component.organigram.OrganigramHelper.class.getName());
+        classNames.add(jakarta.el.ELResolver.class.getName());
 
         // Barcode
         classNames.add("javax.imageio.ImageIO");
