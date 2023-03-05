@@ -22,9 +22,9 @@
         <quarkus-poi.version>1.0.3</quarkus-poi.version>
         <primefaces.version>12.0.0</primefaces.version>
         <primefaces-extensions.version>12.0.4</primefaces-extensions.version>
-        <myfaces.version>2.3-next-M7</myfaces.version>
-        <compiler-plugin.version>3.10.1</compiler-plugin.version>
-        <maven.compiler.release>11</maven.compiler.release>
+        <myfaces.version>2.3-next-SNAPSHOT</myfaces.version>
+        <compiler-plugin.version>3.11.0</compiler-plugin.version>
+        <maven.compiler.release>17</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
@@ -97,4 +97,17 @@
             </plugins>
         </pluginManagement>
     </build>
+    <repositories>
+        <repository>
+            <id>apache.snapshots</id>
+            <name>Apache Development Snapshot Repository</name>
+            <url>https://repository.apache.org/content/repositories/snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 </project>
