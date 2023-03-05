@@ -61,6 +61,6 @@ public class PrimefacesExtensionsResourceTest {
         // InputPhone
         final HtmlInput phone = (HtmlInput) page.getElementById("frmPhone:txtPhone_input");
         assertThat(phone).isNotNull();
-        assertThat(phone.getValue()).isEqualTo("(610) 867-5309");
+        assertThat(phone.getValue()).isEqualTo("610-867-5309");
     }
 }

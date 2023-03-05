@@ -1,6 +1,6 @@
 package io.quarkus.primefaces.runtime.graal;
 
-import javax.faces.FacesException;
+import jakarta.faces.FacesException;
 
 import org.primefaces.component.datatable.DataTable;
 import org.primefaces.component.datatable.export.DataTableCSVExporter;

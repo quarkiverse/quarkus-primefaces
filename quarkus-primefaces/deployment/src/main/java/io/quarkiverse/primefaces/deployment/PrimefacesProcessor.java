@@ -143,8 +143,7 @@ class PrimefacesProcessor {
 
         // neither
         reflectiveClass.produce(new ReflectiveClassBuildItem(false, false,
-                org.primefaces.config.PrimeEnvironment.class.getName(),
-                javax.faces.application.ViewExpiredException.class.getName()));
+                org.primefaces.config.PrimeEnvironment.class.getName()));
     }
 
     @BuildStep

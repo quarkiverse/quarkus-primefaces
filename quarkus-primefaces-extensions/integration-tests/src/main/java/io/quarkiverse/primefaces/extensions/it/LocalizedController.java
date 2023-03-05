@@ -18,9 +18,9 @@ package io.quarkiverse.primefaces.extensions.it;
 
 import java.io.Serializable;
 
-import javax.annotation.PostConstruct;
-import javax.faces.view.ViewScoped;
-import javax.inject.Named;
+import jakarta.annotation.PostConstruct;
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 
 import lombok.Data;
 import lombok.extern.jbosslog.JBossLog;

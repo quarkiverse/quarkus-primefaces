@@ -1,6 +1,6 @@
 package io.quarkus.primefaces.runtime.graal;
 
-import javax.faces.FacesException;
+import jakarta.faces.FacesException;
 
 import org.primefaces.component.export.Exporter;
 import org.primefaces.component.export.ExporterOptions;
