@@ -37,11 +37,6 @@
             <artifactId>resources-monacoeditor</artifactId>
             <version>${primefaces-extensions.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.glassfish</groupId>
-            <artifactId>jakarta.el</artifactId>
-            <version>5.0.0-M1</version>
-        </dependency>
         <!-- GChart and Layout needs GSON-->
         <dependency>
             <groupId>com.google.code.gson</groupId>
