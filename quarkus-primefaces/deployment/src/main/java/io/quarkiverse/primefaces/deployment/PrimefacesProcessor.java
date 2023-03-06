@@ -139,11 +139,12 @@ class PrimefacesProcessor {
 
         // method reflection
         reflectiveClass.produce(
-                new ReflectiveClassBuildItem(true, true, classNames.toArray(new String[classNames.size()])));
+                ReflectiveClassBuildItem.builder(classNames.toArray(new String[classNames.size()])).methods(true)
+                        .fields(true).build());
 
         // neither
-        reflectiveClass.produce(new ReflectiveClassBuildItem(false, false,
-                org.primefaces.config.PrimeEnvironment.class.getName()));
+        reflectiveClass.produce(
+                ReflectiveClassBuildItem.builder(org.primefaces.config.PrimeEnvironment.class.getName()).build());
     }
 
     @BuildStep

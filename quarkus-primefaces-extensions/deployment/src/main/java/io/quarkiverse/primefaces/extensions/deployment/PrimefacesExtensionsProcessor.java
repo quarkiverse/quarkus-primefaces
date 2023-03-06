@@ -93,13 +93,14 @@ class PrimefacesExtensionsProcessor {
         // Monaco Editor
         classNames.add(java.util.Locale.class.getName());
 
-        // methods
+        // methods and fields
         reflectiveClass.produce(
-                new ReflectiveClassBuildItem(true, true, classNames.toArray(new String[classNames.size()])));
+                ReflectiveClassBuildItem.builder(classNames.toArray(new String[classNames.size()])).methods(true)
+                        .fields(true).build());
 
         // neither
-        reflectiveClass.produce(new ReflectiveClassBuildItem(false, false,
-                org.primefaces.extensions.config.PrimeExtensionsEnvironment.class.getName()));
+        reflectiveClass.produce(ReflectiveClassBuildItem.builder(
+                org.primefaces.extensions.config.PrimeExtensionsEnvironment.class.getName()).build());
     }
 
     public List<String> collectClassesInPackage(CombinedIndexBuildItem combinedIndex, String packageName) {
