@@ -1,5 +1,6 @@
 ---
-name: "PrimeFaces Extensions" 
+name: "PrimeFaces Extensions"
+description: "Components and utilities for PrimeFaces" 
 artifact: ${project.groupId}:${project.artifactId}:${project.version} 
 metadata:
   short-name: "primefaces-extensions" 
