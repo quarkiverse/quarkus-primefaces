@@ -18,7 +18,7 @@
         <module>docs</module>
     </modules>
     <properties>
-        <quarkus.version>3.0.0.Alpha5</quarkus.version>
+        <quarkus.version>3.0.0.Alpha6</quarkus.version>
         <quarkus-poi.version>1.0.4</quarkus-poi.version>
         <primefaces.version>12.0.0</primefaces.version>
         <primefaces-extensions.version>12.0.4</primefaces-extensions.version>
