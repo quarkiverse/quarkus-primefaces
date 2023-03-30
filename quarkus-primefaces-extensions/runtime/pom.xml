@@ -29,11 +29,6 @@
         </dependency>
         <dependency>
             <groupId>org.primefaces.extensions</groupId>
-            <artifactId>resources-ckeditor</artifactId>
-            <version>${primefaces-extensions.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.primefaces.extensions</groupId>
             <artifactId>resources-monacoeditor</artifactId>
             <version>${primefaces-extensions.version}</version>
         </dependency>
