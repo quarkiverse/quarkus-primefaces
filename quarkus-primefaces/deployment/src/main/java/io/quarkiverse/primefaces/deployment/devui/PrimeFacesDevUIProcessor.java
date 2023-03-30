@@ -14,16 +14,14 @@ import io.quarkus.devui.spi.page.PageBuilder;
  */
 public class PrimeFacesDevUIProcessor {
 
-    private static final String EXTENSION_NAME = "PrimeFaces";
-
     @BuildStep(onlyIf = IsDevelopment.class)
     void createCard(BuildProducer<CardPageBuildItem> cardPageBuildItemBuildProducer) {
-        final CardPageBuildItem card = new CardPageBuildItem(EXTENSION_NAME);
+        final CardPageBuildItem card = new CardPageBuildItem();
 
         final PageBuilder versionPage = Page.externalPageBuilder("Version")
                 .icon("font-awesome-solid:book")
                 .url("https://www.primefaces.org/showcase/")
-                .isHtmlContent()
+                .doNotEmbed()
                 .staticLabel(Constants.class.getPackage().getImplementationVersion());
         card.addPage(versionPage);
 
