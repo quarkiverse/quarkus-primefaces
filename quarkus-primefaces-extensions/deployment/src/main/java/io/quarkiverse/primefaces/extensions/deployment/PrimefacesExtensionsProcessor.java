@@ -40,7 +40,6 @@ class PrimefacesExtensionsProcessor {
     @BuildStep
     void indexTransitiveDependencies(BuildProducer<IndexDependencyBuildItem> index) {
         index.produce(new IndexDependencyBuildItem("org.primefaces.extensions", "resources-monacoeditor"));
-        index.produce(new IndexDependencyBuildItem("org.primefaces.extensions", "resources-ckeditor"));
         index.produce(new IndexDependencyBuildItem("com.google.code.gson", "gson"));
         index.produce(new IndexDependencyBuildItem("com.googlecode.libphonenumber", "libphonenumber"));
         index.produce(new IndexDependencyBuildItem("com.googlecode.owasp-java-html-sanitizer",
