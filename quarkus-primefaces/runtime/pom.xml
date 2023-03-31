@@ -18,10 +18,6 @@
             <artifactId>myfaces-quarkus</artifactId>
         </dependency>
         <dependency>
-            <groupId>jakarta.el</groupId>
-            <artifactId>jakarta.el-api</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
             <classifier>jakarta</classifier>
