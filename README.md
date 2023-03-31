@@ -15,6 +15,9 @@ A Quarkus extension that lets you utilize [primefaces](https://www.primefaces.or
 
 ## Getting started
 
+
+Read the full [PrimeFaces documentation](https://quarkiverse.github.io/quarkiverse-docs/quarkus-primefaces/dev/).
+
 * Create or use an existing Quarkus application
 * Add the primefaces extension with the [Quarkus CLI](https://quarkus.io/guides/cli-tooling):
 ```bash
