@@ -2,10 +2,10 @@ package io.quarkiverse.primefaces.deployment;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.jboss.jandex.ClassInfo;
 import org.jboss.jandex.DotName;
+import org.primefaces.model.file.CommonsUploadedFile;
 import org.primefaces.util.Constants;
 
 import io.quarkus.deployment.annotations.BuildProducer;
@@ -97,8 +97,7 @@ class PrimefacesProcessor {
     void registerForReflection(PrimeFacesRecorder recorder, BuildProducer<ReflectiveClassBuildItem> reflectiveClass,
             CombinedIndexBuildItem combinedIndex) {
         // All utilities
-        final List<String> classNames = new ArrayList<>();
-        classNames.addAll(List.of(
+        final List<String> classNames = new ArrayList<>(List.of(
                 org.primefaces.expression.SearchExpressionUtils.class.getName(),
                 org.primefaces.expression.SearchExpressionFacade.class.getName(),
                 org.primefaces.clientwindow.PrimeClientWindowUtils.class.getName(),
@@ -111,7 +110,7 @@ class PrimefacesProcessor {
                 org.primefaces.util.ComponentTraversalUtils.class.getName(),
                 org.primefaces.util.ComponentUtils.class.getName(),
                 org.primefaces.util.CompositeUtils.class.getName(),
-                org.primefaces.util.Constants.class.getName(),
+                Constants.class.getName(),
                 org.primefaces.util.DynamicContentSrcBuilder.class.getName(),
                 org.primefaces.util.ELUtils.class.getName(),
                 org.primefaces.util.EscapeUtils.class.getName(),
@@ -126,7 +125,9 @@ class PrimefacesProcessor {
                 org.primefaces.util.SecurityUtils.class.getName()));
 
         // All models
-        classNames.addAll(collectClassesInPackage(combinedIndex, "org.primefaces.model"));
+        List<String> models = collectClassesInPackage(combinedIndex, "org.primefaces.model");
+        models.remove(CommonsUploadedFile.class.getName());
+        classNames.addAll(models);
 
         // components that need special treatment
         classNames.add(org.primefaces.component.fileupload.NativeFileUploadDecoder.class.getName());
@@ -139,7 +140,7 @@ class PrimefacesProcessor {
 
         // method reflection
         reflectiveClass.produce(
-                ReflectiveClassBuildItem.builder(classNames.toArray(new String[classNames.size()])).methods(true)
+                ReflectiveClassBuildItem.builder(classNames.toArray(new String[0])).methods(true)
                         .fields(true).build());
 
         // neither
@@ -162,7 +163,7 @@ class PrimefacesProcessor {
                     .getClassesInPackage(aPackage)
                     .stream()
                     .map(ClassInfo::toString)
-                    .collect(Collectors.toList());
+                    .toList();
             classes.addAll(packageClasses);
         }
         return classes;
