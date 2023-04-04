@@ -40,6 +40,11 @@
             <artifactId>qrcodegen</artifactId>
             <version>1.8.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.primefaces.extensions</groupId>
+            <artifactId>barcode4j-light</artifactId>
+            <version>2.3.0</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
