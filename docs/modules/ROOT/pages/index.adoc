@@ -28,8 +28,6 @@ For instance, with Maven, add the following dependency to your POM file:
 
 When creating a GraalVM Native image you may need to change some of your code to be native friendly and some features may not be available to use in Native mode.
 
-WARNING: DataExporter PDF exporting not supported. OpenLibre PDF or iText both have issues with GraalVM mode so they are excluded. See https://github.com/graalvm/mandrel/issues/411[Mandrel Issue] 
-
 WARNING: FeedReader not supported. Rome library uses JDOM XML parsing and we did not spend the time to investigate for a lightly used component.
 
 WARNING: EL expressions which use reflection may run into issues with things like List size() or Enum name() as they are not bean compliant method names. You might need to change your EL expression or add helper code to achieve what you want.

@@ -28,6 +28,11 @@
             <version>${quarkus-poi.version}</version>
         </dependency>
         <dependency>
+            <groupId>io.quarkiverse.itext</groupId>
+            <artifactId>quarkus-itext-deployment</artifactId>
+            <version>${quarkus-itext.version}</version>
+        </dependency>
+        <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-vertx-http-dev-ui-spi</artifactId>
         </dependency>

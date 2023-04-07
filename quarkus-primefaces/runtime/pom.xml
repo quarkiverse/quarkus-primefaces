@@ -28,6 +28,11 @@
             <artifactId>quarkus-poi</artifactId>
             <version>${quarkus-poi.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.quarkiverse.itext</groupId>
+            <artifactId>quarkus-itext</artifactId>
+            <version>${quarkus-itext.version}</version>
+        </dependency>
         <!-- Sanitizing -->
         <dependency>
             <groupId>com.googlecode.owasp-java-html-sanitizer</groupId>
