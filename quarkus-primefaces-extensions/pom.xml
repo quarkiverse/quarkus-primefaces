@@ -4,7 +4,7 @@
     <parent>
         <groupId>io.quarkiverse.primefaces</groupId>
         <artifactId>quarkus-primefaces-ecosystem</artifactId>
-        <version>3.12.3</version>
+        <version>3.12.4-SNAPSHOT</version>
     </parent>
     <artifactId>quarkus-primefaces-extensions-parent</artifactId>
     <packaging>pom</packaging>
