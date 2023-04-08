@@ -44,6 +44,7 @@ class PrimefacesProcessor {
         index.produce(new IndexDependencyBuildItem("com.googlecode.owasp-java-html-sanitizer",
                 "owasp-java-html-sanitizer"));
         index.produce(new IndexDependencyBuildItem("io.nayuki", "qrcodegen"));
+        index.produce(new IndexDependencyBuildItem("org.primefaces.extensions", "barcode4j-light"));
     }
 
     @BuildStep
@@ -136,7 +137,7 @@ class PrimefacesProcessor {
 
         // Barcode
         classNames.add("javax.imageio.ImageIO");
-        classNames.add("org.krysalis.barcode4j.output.bitmap.ImageIOBitmapEncoder");
+        classNames.add(org.krysalis.barcode4j.output.bitmap.ImageIOBitmapEncoder.class.getName());
 
         // method reflection
         reflectiveClass.produce(
