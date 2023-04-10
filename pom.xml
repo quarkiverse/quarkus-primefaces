@@ -20,7 +20,7 @@
     <properties>
         <quarkus.version>3.0.0.CR2</quarkus.version>
         <quarkus-poi.version>2.0.0.Beta2</quarkus-poi.version>
-        <quarkus-itext.version>3.0.1</quarkus-itext.version>
+        <quarkus-itext.version>3.0.2</quarkus-itext.version>
         <primefaces.version>12.0.0</primefaces.version>
         <primefaces-extensions.version>12.0.6</primefaces-extensions.version>
         <myfaces.version>4.0.0</myfaces.version>
