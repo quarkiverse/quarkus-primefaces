@@ -19,7 +19,7 @@
     </modules>
     <properties>
         <quarkus.version>3.0.0.Final</quarkus.version>
-        <quarkus-poi.version>2.0.0</quarkus-poi.version>
+        <quarkus-poi.version>2.0.1</quarkus-poi.version>
         <quarkus-itext.version>3.0.2</quarkus-itext.version>
         <primefaces.version>12.0.0</primefaces.version>
         <primefaces-extensions.version>12.0.6</primefaces-extensions.version>
