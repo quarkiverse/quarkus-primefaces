@@ -2,7 +2,6 @@ package io.quarkiverse.primefaces.extensions.deployment;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.jboss.jandex.ClassInfo;
 import org.jboss.jandex.DotName;

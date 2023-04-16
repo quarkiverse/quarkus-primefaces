@@ -2,10 +2,10 @@ package io.quarkiverse.primefaces.deployment;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.jboss.jandex.ClassInfo;
 import org.jboss.jandex.DotName;
+import org.primefaces.model.file.CommonsUploadedFile;
 import org.primefaces.util.Constants;
 
 import io.quarkus.deployment.annotations.BuildProducer;
@@ -126,7 +126,9 @@ class PrimefacesProcessor {
                 org.primefaces.util.SecurityUtils.class.getName()));
 
         // All models
-        classNames.addAll(collectClassesInPackage(combinedIndex, "org.primefaces.model"));
+        List<String> models = collectClassesInPackage(combinedIndex, "org.primefaces.model");
+        models.remove(CommonsUploadedFile.class.getName());
+        classNames.addAll(models);
 
         // components that need special treatment
         classNames.add(org.primefaces.component.fileupload.NativeFileUploadDecoder.class.getName());
