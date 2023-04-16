@@ -46,8 +46,8 @@ The versioning of this extension will follow the pattern `[quarkus.version].[pri
 
 | Version | Explanation |
 | --- | --- |
-| 2.12.1 | Quarkus 2 (EE8), PrimeFaces 12, Revision 1 |
-| 3.12.2 | Quarkus 3 (EEE10), PrimeFaces 12, Revision 2 |
+| 2.12.3 | Quarkus 2 (EE8), PrimeFaces 12, Revision 3 |
+| 3.12.4 | Quarkus 3 (EEE10), PrimeFaces 12, Revision 4 |
 
 > **⚠️**
 NOTE: FeedReader component is not supported in GraalVM Native Image mode due to complexities with their third party library Rome.
