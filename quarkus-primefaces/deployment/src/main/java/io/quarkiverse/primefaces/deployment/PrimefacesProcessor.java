@@ -139,7 +139,7 @@ class PrimefacesProcessor {
 
         // method reflection
         reflectiveClass.produce(
-                new ReflectiveClassBuildItem(true, true, classNames.toArray(new String[classNames.size()])));
+                new ReflectiveClassBuildItem(true, true, classNames.toArray(new String[0])));
 
         // neither
         reflectiveClass.produce(new ReflectiveClassBuildItem(false, false,
@@ -162,7 +162,7 @@ class PrimefacesProcessor {
                     .getClassesInPackage(aPackage)
                     .stream()
                     .map(ClassInfo::toString)
-                    .collect(Collectors.toList());
+                    .toList();
             classes.addAll(packageClasses);
         }
         return classes;
