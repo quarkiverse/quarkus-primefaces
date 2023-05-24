@@ -18,12 +18,12 @@
         <module>docs</module>
     </modules>
     <properties>
-        <quarkus.version>3.0.3.Final</quarkus.version>
+        <quarkus.version>3.1.0.Final</quarkus.version>
         <quarkus-poi.version>2.0.1</quarkus-poi.version>
         <quarkus-itext.version>3.0.2</quarkus-itext.version>
         <primefaces.version>12.0.0</primefaces.version>
         <primefaces-extensions.version>12.0.7</primefaces-extensions.version>
-        <myfaces.version>4.0.0</myfaces.version>
+        <myfaces.version>4.0.1</myfaces.version>
         <compiler-plugin.version>3.11.0</compiler-plugin.version>
         <maven.compiler.release>17</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
