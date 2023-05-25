@@ -8,7 +8,7 @@
     </parent>
     <groupId>io.quarkiverse.primefaces</groupId>
     <artifactId>quarkus-primefaces-ecosystem</artifactId>
-    <version>3.13.0</version>
+    <version>999-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Quarkus PrimeFaces Ecosystem</name>
     <description>PrimeFaces - is the ultimate component suite for JavaServer Faces</description>
@@ -118,8 +118,4 @@
             </snapshots>
         </repository>
     </repositories>
-
-  <scm>
-    <tag>3.13.0</tag>
-  </scm>
 </project>
