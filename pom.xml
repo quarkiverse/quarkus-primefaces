@@ -18,7 +18,7 @@
     <module>docs</module>
   </modules>
   <scm>
-    <connection>:git:git@github.com:quarkiverse/quarkus-primefaces.git</connection>
+    <connection>scm:git:git@github.com:quarkiverse/quarkus-primefaces.git</connection>
     <developerConnection>scm:git:git@github.com:quarkiverse/quarkus-primefaces.git</developerConnection>
     <url>https://github.com/quarkiverse/quarkus-primefaces</url>
   </scm>
