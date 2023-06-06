@@ -43,6 +43,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "gastaldi",
+      "name": "George Gastaldi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/54133?v=4",
+      "profile": "http://gastaldi.wordpress.com",
+      "contributions": [
+        "infra"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -50,5 +59,6 @@
   "repoType": "github",
   "repoHost": "https://github.com",
   "projectName": "quarkus-primefaces",
-  "projectOwner": "quarkiverse"
+  "projectOwner": "quarkiverse",
+  "commitType": "docs"
 }
