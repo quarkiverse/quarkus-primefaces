@@ -1,6 +1,6 @@
 # Quarkus PrimeFaces
 [![Version](https://img.shields.io/maven-central/v/io.quarkiverse.primefaces/quarkus-primefaces?logo=apache-maven&style=flat-square)](https://search.maven.org/artifact/io.quarkiverse.primefaces/quarkus-primefaces)
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square)](https://opensource.org/licenses/Apache-2.0)
 [![Build](https://github.com/quarkiverse/quarkus-primefaces/actions/workflows/build.yml/badge.svg)](https://github.com/quarkiverse/quarkus-primefaces/actions/workflows/build.yml)
 [![Stackoverflow](https://img.shields.io/badge/StackOverflow-primefaces-chocolate.svg)](https://stackoverflow.com/questions/tagged/primefaces)
@@ -47,7 +47,7 @@ The versioning of this extension will follow the pattern `[quarkus.version].[pri
 | Version | Explanation |
 | --- | --- |
 | 2.12.3 | Quarkus 2 (EE8), PrimeFaces 12, Revision 3 |
-| 3.12.4 | Quarkus 3 (EEE10), PrimeFaces 12, Revision 4 |
+| 3.13.0 | Quarkus 3 (EEE10), PrimeFaces 13, Revision 0 |
 
 > **⚠️**
 NOTE: FeedReader component is not supported in GraalVM Native Image mode due to complexities with their third party library Rome.
