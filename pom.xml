@@ -23,7 +23,7 @@
     <url>https://github.com/quarkiverse/quarkus-primefaces</url>
   </scm>
   <properties>
-    <quarkus.version>3.1.0.Final</quarkus.version>
+    <quarkus.version>3.1.1.Final</quarkus.version>
     <quarkus-poi.version>2.0.2</quarkus-poi.version>
     <quarkus-itext.version>3.0.3</quarkus-itext.version>
     <primefaces.version>13.0.0-RC1</primefaces.version>
