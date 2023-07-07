@@ -1,5 +1,5 @@
 name: quarkus-primefaces
-title: Quarkus PrimeFaces
+title: PrimeFaces
 version: dev
 nav:
   - modules/ROOT/nav.adoc
