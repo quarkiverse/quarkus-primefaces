@@ -24,8 +24,8 @@ import org.primefaces.model.SortOrder;
 
 public class LazySorter implements Comparator<Car> {
 
-    private String sortField;
-    private SortOrder sortOrder;
+    private final String sortField;
+    private final SortOrder sortOrder;
 
     public LazySorter(String sortField, SortOrder sortOrder) {
         this.sortField = sortField;

@@ -78,6 +78,12 @@
         <scope>provided</scope>
       </dependency>
       <dependency>
+        <groupId>io.quarkiverse.playwright</groupId>
+        <artifactId>quarkus-playwright</artifactId>
+        <version>0.0.1</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
         <groupId>net.sourceforge.htmlunit</groupId>
         <artifactId>htmlunit</artifactId>
         <version>2.70.0</version>

@@ -4,63 +4,53 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.net.URL;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import com.gargoylesoftware.htmlunit.BrowserVersion;
-import com.gargoylesoftware.htmlunit.NicelyResynchronizingAjaxController;
-import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.HtmlInput;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import com.gargoylesoftware.htmlunit.html.HtmlSpan;
+import com.microsoft.playwright.BrowserContext;
+import com.microsoft.playwright.Locator;
+import com.microsoft.playwright.Page;
+import com.microsoft.playwright.Response;
 
+import io.quarkiverse.playwright.InjectPlaywright;
+import io.quarkiverse.playwright.WithPlaywright;
 import io.quarkus.test.common.http.TestHTTPResource;
 import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest
+@WithPlaywright
 public class PrimefacesExtensionsResourceTest {
+    @InjectPlaywright
+    BrowserContext context;
 
-    @TestHTTPResource
-    URL url;
-
-    private static WebClient webClient;
-
-    @BeforeAll
-    public static void initWebClient() {
-        webClient = new WebClient(BrowserVersion.CHROME);
-        webClient.getOptions().setJavaScriptEnabled(true);
-        webClient.getOptions().setCssEnabled(false);
-        webClient.getOptions().setUseInsecureSSL(true);
-        webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
-        webClient.getCookieManager().setCookiesEnabled(true);
-        webClient.setAjaxController(new NicelyResynchronizingAjaxController());
-    }
-
-    @AfterAll
-    public static void closeWebClient() {
-        if (webClient != null) {
-            webClient.close();
-        }
-    }
+    @TestHTTPResource("/index.xhtml")
+    URL index;
 
     @Test
-    public void shouldOpenIndexPage() throws Exception {
-        final HtmlPage page = webClient.getPage(url + "/index.xhtml");
+    public void shouldOpenIndexPage() {
+        final Page page = context.newPage();
+        Response response = page.navigate(index.toString());
+        Assertions.assertEquals("OK", response.statusText());
+
+        page.waitForLoadState();
+
+        // page title
+        String title = page.title();
+        Assertions.assertEquals("Quarkiverse PFE", title);
 
         // escape selector
-        final HtmlSpan selector = (HtmlSpan) page.getElementById("selector");
-        assertThat(selector).isNotNull();
-        assertThat(selector.getTextContent().trim()).isEqualTo("form\\\\:myPanel");
+        final Locator message = page.locator("#selector");
+        assertThat(message).isNotNull();
+        assertThat(message.innerText()).isEqualTo("form\\\\:myPanel");
 
         // localized
-        final HtmlSpan localized = (HtmlSpan) page.getElementById("localized");
+        final Locator localized = page.locator("#localized");
         assertThat(localized).isNotNull();
-        assertThat(localized.getTextContent().trim()).isEqualTo("Localized Test");
+        assertThat(localized.innerText().trim()).isEqualTo("Localized Test");
 
         // InputPhone
-        final HtmlInput phone = (HtmlInput) page.getElementById("frmPhone:txtPhone_input");
+        final Locator phone = page.locator("#frmPhone\\:txtPhone_input");
         assertThat(phone).isNotNull();
-        assertThat(phone.getValue()).isEqualTo("610-867-5309");
+        assertThat(phone.getAttribute("value")).isEqualTo("610-867-5309");
     }
 }

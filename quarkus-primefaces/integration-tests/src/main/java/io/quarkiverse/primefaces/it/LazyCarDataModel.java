@@ -33,7 +33,7 @@ import org.primefaces.model.SortMeta;
  */
 public class LazyCarDataModel extends LazyDataModel<Car> {
 
-    private List<Car> datasource;
+    private final List<Car> datasource;
 
     public LazyCarDataModel(List<Car> datasource) {
         this.datasource = datasource;

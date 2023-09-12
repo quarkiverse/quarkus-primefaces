@@ -19,6 +19,7 @@
 package io.quarkiverse.primefaces.it;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Car implements Serializable {
 
@@ -112,9 +113,6 @@ public class Car implements Serializable {
             return false;
         }
         final Car other = (Car) obj;
-        if ((this.id == null) ? (other.id != null) : !this.id.equals(other.id)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.id, other.id);
     }
 }

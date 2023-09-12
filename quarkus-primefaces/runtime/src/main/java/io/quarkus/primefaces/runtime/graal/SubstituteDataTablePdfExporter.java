@@ -15,7 +15,7 @@ import com.oracle.svm.core.annotate.TargetClass;
 public final class SubstituteDataTablePdfExporter {
 
     @Substitute
-    protected void addEmptyLine(Paragraph paragraph, int number) {
+    private void addEmptyLine(Paragraph paragraph, int number) {
         for (int i = 0; i < number; i++) {
             paragraph.addParagraph(new Paragraph(" "));
         }

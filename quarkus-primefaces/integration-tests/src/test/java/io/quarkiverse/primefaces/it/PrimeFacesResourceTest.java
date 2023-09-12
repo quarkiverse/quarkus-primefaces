@@ -4,57 +4,58 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 import java.net.URL;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import com.gargoylesoftware.htmlunit.BrowserVersion;
-import com.gargoylesoftware.htmlunit.NicelyResynchronizingAjaxController;
-import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.HtmlDivision;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import com.microsoft.playwright.BrowserContext;
+import com.microsoft.playwright.Locator;
+import com.microsoft.playwright.Page;
+import com.microsoft.playwright.Response;
 
+import io.quarkiverse.playwright.InjectPlaywright;
+import io.quarkiverse.playwright.WithPlaywright;
 import io.quarkus.test.common.http.TestHTTPResource;
 import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest
+@WithPlaywright
 public class PrimeFacesResourceTest {
 
-    @TestHTTPResource
-    URL url;
+    @InjectPlaywright
+    BrowserContext context;
 
-    private static WebClient webClient;
+    @TestHTTPResource("/index.xhtml")
+    URL index;
 
-    @BeforeAll
-    public static void initWebClient() {
-        webClient = new WebClient(BrowserVersion.CHROME);
-        webClient.getOptions().setJavaScriptEnabled(true);
-        webClient.getOptions().setCssEnabled(false);
-        webClient.getOptions().setUseInsecureSSL(true);
-        webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
-        webClient.getCookieManager().setCookiesEnabled(true);
-        webClient.setAjaxController(new NicelyResynchronizingAjaxController());
-    }
-
-    @AfterAll
-    public static void closeWebClient() {
-        if (webClient != null) {
-            webClient.close();
-        }
-    }
+    @TestHTTPResource("/accessibility.xhtml")
+    URL accessibility;
 
     @Test
     public void shouldOpenIndexPage() throws Exception {
-        final HtmlPage page = webClient.getPage(url + "/index.xhtml");
-        final HtmlDivision datatable = (HtmlDivision) page.getElementById("form:carTable");
+        final Page page = context.newPage();
+        Response response = page.navigate(index.toString());
+        Assertions.assertEquals("OK", response.statusText());
+
+        page.waitForLoadState();
+
+        // page title
+        String title = page.title();
+        Assertions.assertEquals("Quarkiverse PrimeFaces", title);
+
+        // datatable
+        final Locator datatable = page.locator("#form\\:carTable");
         assertThat(datatable).isNotNull();
-        assertThat(datatable.getByXPath("//tr[contains(@class,'ui-datatable-selectable')]")).hasSize(10);
+        assertThat(datatable.locator("//tr[contains(@class,'ui-datatable-selectable')]").all()).hasSize(10);
     }
 
     @Test
     public void shouldAllowTemplate() throws Exception {
-        final HtmlPage page = webClient.getPage(url + "/accessibility.xhtml");
-        final String title = page.getTitleText();
-        assertThat(title).isEqualTo("Accessibility");
+        final Page page = context.newPage();
+        Response response = page.navigate(accessibility.toString());
+        Assertions.assertEquals("OK", response.statusText());
+
+        // page title
+        String title = page.title();
+        Assertions.assertEquals("Accessibility", title);
     }
 }
