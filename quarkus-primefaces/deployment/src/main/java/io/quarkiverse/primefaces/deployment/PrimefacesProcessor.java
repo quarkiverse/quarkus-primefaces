@@ -45,6 +45,7 @@ class PrimefacesProcessor {
                 "owasp-java-html-sanitizer"));
         index.produce(new IndexDependencyBuildItem("io.nayuki", "qrcodegen"));
         index.produce(new IndexDependencyBuildItem("org.primefaces.extensions", "barcode4j-light"));
+        index.produce(new IndexDependencyBuildItem("org.overviewproject", "mime-types"));
     }
 
     @BuildStep
@@ -91,6 +92,9 @@ class PrimefacesProcessor {
         resourceBundleBuildItem.produce(new NativeImageResourceBundleBuildItem("org.primefaces.Messages_sv"));
         resourceBundleBuildItem.produce(new NativeImageResourceBundleBuildItem("org.primefaces.Messages_tr"));
         resourceBundleBuildItem.produce(new NativeImageResourceBundleBuildItem("org.primefaces.Messages_zh"));
+
+        // mime types
+        resourceBundleBuildItem.produce(new NativeImageResourceBundleBuildItem("mime.cache"));
     }
 
     @BuildStep

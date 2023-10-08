@@ -2,7 +2,6 @@ package io.quarkiverse.primefaces.extensions.deployment;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.jboss.jandex.ClassInfo;
 import org.jboss.jandex.DotName;
@@ -94,7 +93,7 @@ class PrimefacesExtensionsProcessor {
 
         // methods and fields
         reflectiveClass.produce(
-                ReflectiveClassBuildItem.builder(classNames.toArray(new String[classNames.size()])).methods(true)
+                ReflectiveClassBuildItem.builder(classNames.toArray(new String[0])).methods(true)
                         .fields(true).build());
 
         // neither
@@ -111,7 +110,7 @@ class PrimefacesExtensionsProcessor {
                     .getClassesInPackage(aPackage)
                     .stream()
                     .map(ClassInfo::toString)
-                    .collect(Collectors.toList());
+                    .toList();
             classes.addAll(packageClasses);
         }
         return classes;
