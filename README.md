@@ -49,7 +49,12 @@ Or manually add to pom.xml:
 
 ## Versioning
 
-The versioning of this extension will follow the pattern `[quarkus.version].[primefaces.version].[patch]`. For example:
+The versioning of this extension will follow the pattern `[quarkus.version].[primefaces.version].[patch]`. 
+The `patch` is not the PrimeFaces version patch it is the patch version of this extension as we may make Quarkus
+fixes in between PF releases.  However we strive to stay on top of PrimeFaces minor releases such as 13.0.2 and 
+publish a new version here right after a PrimeFaces release.
+
+For example:
 
 | Version | Explanation |
 | --- | --- |
