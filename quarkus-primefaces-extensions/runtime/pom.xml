@@ -42,7 +42,7 @@
         <dependency>
             <groupId>com.googlecode.libphonenumber</groupId>
             <artifactId>libphonenumber</artifactId>
-            <version>8.13.24</version>
+            <version>8.13.25</version>
         </dependency>
         <!-- Sanitizing Converter -->
         <dependency>
