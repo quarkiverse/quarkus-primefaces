@@ -10,7 +10,7 @@ public class PrimeFacesFeature implements Feature {
     @Override
     public void afterRegistration(AfterRegistrationAccess access) {
         // Barcode component is optional but must register this for native mode since it uses AWT
-        RuntimeClassInitialization.initializeAtRunTime(BitmapEncoderRegistry.class.getName(), REASON);
+        RuntimeClassInitialization.initializeAtRunTime(BitmapEncoderRegistry.class.getName());
     }
 
     @Override

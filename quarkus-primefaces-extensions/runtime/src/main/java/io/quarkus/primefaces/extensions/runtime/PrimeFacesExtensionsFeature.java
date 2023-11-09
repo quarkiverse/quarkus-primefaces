@@ -15,6 +15,6 @@ public class PrimeFacesExtensionsFeature implements Feature {
     @Override
     public void afterRegistration(AfterRegistrationAccess access) {
         // Commons Lang3 is optional but a lot of PFE users use it
-        RuntimeClassInitialization.initializeAtRunTime("org.apache.commons.lang3.RandomUtils", REASON);
+        RuntimeClassInitialization.initializeAtRunTime("org.apache.commons.lang3.RandomUtils");
     }
 }
