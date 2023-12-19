@@ -58,8 +58,8 @@ For example:
 
 | Version | Explanation |
 | --- | --- |
-| 2.12.3 | Quarkus 2 (EE8), PrimeFaces 12, Revision 3 |
-| 3.13.0 | Quarkus 3 (EEE10), PrimeFaces 13, Revision 0 |
+| ![2.x](https://img.shields.io/maven-central/v/io.quarkiverse.primefaces/quarkus-primefaces?versionPrefix=2.&color=cyan) | Quarkus 2 (EE8), PrimeFaces 12, Revision 3 |
+| ![3.x](https://img.shields.io/maven-central/v/io.quarkiverse.primefaces/quarkus-primefaces?versionPrefix=3.&color=cyan) | Quarkus 3 (EEE10), PrimeFaces 13, Revision 0 |
 
 > **⚠️**
 NOTE: FeedReader component is not supported in GraalVM Native Image mode due to complexities with their third party library Rome.
