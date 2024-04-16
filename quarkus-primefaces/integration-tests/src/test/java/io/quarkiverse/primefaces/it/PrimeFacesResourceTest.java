@@ -16,7 +16,9 @@ import io.quarkiverse.playwright.InjectPlaywright;
 import io.quarkiverse.playwright.WithPlaywright;
 import io.quarkus.test.common.http.TestHTTPResource;
 import io.quarkus.test.junit.QuarkusTest;
+import lombok.extern.jbosslog.JBossLog;
 
+@JBossLog
 @QuarkusTest
 @WithPlaywright
 public class PrimeFacesResourceTest {
@@ -31,9 +33,10 @@ public class PrimeFacesResourceTest {
     URL accessibility;
 
     @Test
-    public void shouldOpenIndexPage() throws Exception {
+    public void shouldOpenIndexPage() {
         final Page page = context.newPage();
         Response response = page.navigate(index.toString());
+        log.infof("Response: %s", response.text());
         Assertions.assertEquals("OK", response.statusText());
 
         page.waitForLoadState();
@@ -49,9 +52,10 @@ public class PrimeFacesResourceTest {
     }
 
     @Test
-    public void shouldAllowTemplate() throws Exception {
+    public void shouldAllowTemplate() {
         final Page page = context.newPage();
         Response response = page.navigate(accessibility.toString());
+        log.infof("Response: %s", response.text());
         Assertions.assertEquals("OK", response.statusText());
 
         // page title

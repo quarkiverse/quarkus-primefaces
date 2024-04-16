@@ -2,11 +2,13 @@ package io.quarkiverse.primefaces.deployment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.jboss.jandex.ClassInfo;
 import org.jboss.jandex.DotName;
 import org.primefaces.model.file.CommonsUploadedFile;
 import org.primefaces.util.Constants;
+import org.primefaces.util.PropertyDescriptorResolver;
 
 import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
@@ -66,6 +68,7 @@ class PrimefacesProcessor {
                 "META-INF/LICENSE.txt",
                 "META-INF/NOTICE.txt",
                 "META-INF/services/org.primefaces.component.fileupload.FileUploadDecoder",
+                "META-INF/services/org.primefaces.util.PropertyDescriptorResolver",
                 "META-INF/services/org.primefaces.virusscan.VirusScanner"));
 
         resourceBundleBuildItem.produce(new NativeImageResourceBundleBuildItem("org.primefaces.Messages"));
@@ -104,7 +107,6 @@ class PrimefacesProcessor {
         // All utilities
         final List<String> classNames = new ArrayList<>(List.of(
                 org.primefaces.expression.SearchExpressionUtils.class.getName(),
-                org.primefaces.expression.SearchExpressionFacade.class.getName(),
                 org.primefaces.clientwindow.PrimeClientWindowUtils.class.getName(),
                 org.primefaces.renderkit.RendererUtils.class.getName(),
                 org.primefaces.seo.JsonLD.class.getName(),
@@ -127,7 +129,8 @@ class PrimefacesProcessor {
                 org.primefaces.util.LocaleUtils.class.getName(),
                 org.primefaces.util.MessageFactory.class.getName(),
                 org.primefaces.util.ResourceUtils.class.getName(),
-                org.primefaces.util.SecurityUtils.class.getName()));
+                org.primefaces.util.SecurityUtils.class.getName(),
+                PropertyDescriptorResolver.DefaultResolver.class.getName()));
 
         // All models
         List<String> models = collectClassesInPackage(combinedIndex, "org.primefaces.model");
@@ -138,6 +141,7 @@ class PrimefacesProcessor {
         classNames.add(org.primefaces.component.fileupload.NativeFileUploadDecoder.class.getName());
         classNames.add(org.primefaces.application.exceptionhandler.ExceptionInfo.class.getName());
         classNames.add(org.primefaces.component.organigram.OrganigramHelper.class.getName());
+        classNames.addAll(collectImplementors(combinedIndex, PropertyDescriptorResolver.class.getName()));
 
         // Barcode
         classNames.add("javax.imageio.ImageIO");
@@ -171,6 +175,26 @@ class PrimefacesProcessor {
                     .toList();
             classes.addAll(packageClasses);
         }
+        return classes;
+    }
+
+    private List<String> collectSubclasses(CombinedIndexBuildItem combinedIndex, String className) {
+        List<String> classes = combinedIndex.getIndex()
+                .getAllKnownSubclasses(DotName.createSimple(className))
+                .stream()
+                .map(ClassInfo::toString)
+                .collect(Collectors.toList());
+        classes.add(className);
+        return classes;
+    }
+
+    public List<String> collectImplementors(CombinedIndexBuildItem combinedIndex, String className) {
+        List<String> classes = combinedIndex.getIndex()
+                .getAllKnownImplementors(DotName.createSimple(className))
+                .stream()
+                .map(ClassInfo::toString)
+                .collect(Collectors.toList());
+        classes.add(className);
         return classes;
     }
 }

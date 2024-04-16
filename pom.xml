@@ -27,8 +27,8 @@
     <quarkus.version>3.8.3</quarkus.version>
     <quarkus-poi.version>2.0.5</quarkus-poi.version>
     <quarkus-itext.version>3.0.4</quarkus-itext.version>
-    <primefaces.version>13.0.8</primefaces.version>
-    <primefaces-extensions.version>13.0.8</primefaces-extensions.version>
+    <primefaces.version>14.0.0-RC3</primefaces.version>
+    <primefaces-extensions.version>14.0.0-RC3</primefaces-extensions.version>
     <myfaces.version>4.0.2</myfaces.version>
     <compiler-plugin.version>3.13.0</compiler-plugin.version>
     <maven.compiler.release>17</maven.compiler.release>
@@ -97,6 +97,17 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+  <repositories>
+    <repository>
+      <id>apache.snapshots</id>
+      <name>Apache Development Snapshot Repository</name>
+      <url>https://repository.apache.org/content/repositories/snapshots/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots />
+    </repository>
+  </repositories>
   <build>
     <pluginManagement>
       <plugins>
@@ -117,15 +128,4 @@
       </plugins>
     </pluginManagement>
   </build>
-  <repositories>
-    <repository>
-      <id>apache.snapshots</id>
-      <name>Apache Development Snapshot Repository</name>
-      <url>https://repository.apache.org/content/repositories/snapshots/</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots />
-    </repository>
-  </repositories>
 </project>

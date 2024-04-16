@@ -6,6 +6,7 @@ import io.quarkus.deployment.IsDevelopment;
 import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
 import io.quarkus.devui.spi.page.CardPageBuildItem;
+import io.quarkus.devui.spi.page.ExternalPageBuilder;
 import io.quarkus.devui.spi.page.Page;
 import io.quarkus.devui.spi.page.PageBuilder;
 
@@ -18,7 +19,7 @@ public class PrimeFacesDevUIProcessor {
     void createCard(BuildProducer<CardPageBuildItem> cardPageBuildItemBuildProducer) {
         final CardPageBuildItem card = new CardPageBuildItem();
 
-        final PageBuilder versionPage = Page.externalPageBuilder("Version")
+        final PageBuilder<ExternalPageBuilder> versionPage = Page.externalPageBuilder("Version")
                 .icon("font-awesome-solid:book")
                 .url("https://www.primefaces.org/showcase/")
                 .doNotEmbed()

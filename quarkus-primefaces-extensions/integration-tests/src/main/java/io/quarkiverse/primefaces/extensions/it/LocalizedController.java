@@ -16,6 +16,7 @@
 */
 package io.quarkiverse.primefaces.extensions.it;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 import jakarta.annotation.PostConstruct;
@@ -31,6 +32,7 @@ import lombok.extern.jbosslog.JBossLog;
 @ViewScoped
 public class LocalizedController implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
     private String test;
 

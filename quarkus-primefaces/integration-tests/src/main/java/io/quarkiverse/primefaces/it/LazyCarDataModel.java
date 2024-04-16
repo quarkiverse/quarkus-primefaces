@@ -19,7 +19,6 @@
 package io.quarkiverse.primefaces.it;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -57,7 +56,7 @@ public class LazyCarDataModel extends LazyDataModel<Car> {
 
     @Override
     public List<Car> load(int first, int pageSize, Map<String, SortMeta> sortMeta, Map<String, FilterMeta> filterMeta) {
-        List<Car> data = new ArrayList<Car>();
+        List<Car> data = new ArrayList<>();
 
         //filter
         for (Car car : datasource) {
@@ -90,7 +89,7 @@ public class LazyCarDataModel extends LazyDataModel<Car> {
         //sort
         if (sortMeta != null) {
             for (SortMeta current : sortMeta.values()) {
-                Collections.sort(data, new LazySorter(current.getField(), current.getOrder()));
+                data.sort(new LazySorter(current.getField(), current.getOrder()));
             }
         }
 

@@ -16,6 +16,7 @@
 */
 package io.quarkiverse.primefaces.extensions.it;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -38,6 +39,7 @@ import lombok.extern.jbosslog.JBossLog;
 @ViewScoped
 public class InputPhoneController implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
     private String phoneNumber;
     private Map<String, String> localizedCountries;
