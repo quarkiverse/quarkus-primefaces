@@ -58,9 +58,9 @@ For example:
 
 | Version | Explanation |
 | --- | --- |
-| ![2.12.x](https://img.shields.io/maven-central/v/io.quarkiverse.primefaces/quarkus-primefaces?versionPrefix=2.&color=cyan) | Quarkus 2 (EE8), PrimeFaces 12 |
-| ![3.13.x](https://img.shields.io/maven-central/v/io.quarkiverse.primefaces/quarkus-primefaces?versionPrefix=3.13&color=cyan) | Quarkus 3 (EEE10), PrimeFaces 13 |
-| ![3.14.x](https://img.shields.io/maven-central/v/io.quarkiverse.primefaces/quarkus-primefaces?versionPrefix=3.14&color=cyan) | Quarkus 3 (EEE10), PrimeFaces 14 |
+| ![2.12.x](https://img.shields.io/maven-central/v/io.quarkiverse.primefaces/quarkus-primefaces?versionPrefix=2.&color=cyan)   | Quarkus 2 (EE08), PrimeFaces 12 |
+| ![3.13.x](https://img.shields.io/maven-central/v/io.quarkiverse.primefaces/quarkus-primefaces?versionPrefix=3.13&color=cyan) | Quarkus 3 (EE10), PrimeFaces 13 |
+| ![3.14.x](https://img.shields.io/maven-central/v/io.quarkiverse.primefaces/quarkus-primefaces?versionPrefix=3.14&color=cyan) | Quarkus 3 (EE10), PrimeFaces 14 |
 
 > [!IMPORTANT]  
 > FeedReader component is not supported in GraalVM Native Image mode due to complexities with their third party library Rome.
