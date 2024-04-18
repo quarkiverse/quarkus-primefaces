@@ -48,6 +48,7 @@ class PrimefacesProcessor {
         index.produce(new IndexDependencyBuildItem("io.nayuki", "qrcodegen"));
         index.produce(new IndexDependencyBuildItem("org.primefaces.extensions", "barcode4j-light"));
         index.produce(new IndexDependencyBuildItem("org.overviewproject", "mime-types"));
+        index.produce(new IndexDependencyBuildItem("software.xdev", "chartjs-java-model"));
     }
 
     @BuildStep
@@ -106,6 +107,7 @@ class PrimefacesProcessor {
             CombinedIndexBuildItem combinedIndex) {
         // All utilities
         final List<String> classNames = new ArrayList<>(List.of(
+                org.primefaces.component.api.IterationStatus.class.getName(),
                 org.primefaces.expression.SearchExpressionUtils.class.getName(),
                 org.primefaces.clientwindow.PrimeClientWindowUtils.class.getName(),
                 org.primefaces.renderkit.RendererUtils.class.getName(),
@@ -147,10 +149,23 @@ class PrimefacesProcessor {
         classNames.add("javax.imageio.ImageIO");
         classNames.add(org.krysalis.barcode4j.output.bitmap.ImageIOBitmapEncoder.class.getName());
 
+        // Chart XDev models
+        classNames.addAll(collectClassesInPackage(combinedIndex, "software.xdev.chartjs.model"));
+
         // method reflection
         reflectiveClass.produce(
                 ReflectiveClassBuildItem.builder(classNames.toArray(new String[0])).methods(true)
                         .fields(true).build());
+
+        // constructor reflection
+
+        // Exporters
+        classNames.clear();
+        classNames.addAll(collectImplementors(combinedIndex, org.primefaces.component.export.Exporter.class.getName()));
+        classNames.addAll(collectImplementors(combinedIndex, org.primefaces.component.export.ExporterOptions.class.getName()));
+        reflectiveClass.produce(
+                ReflectiveClassBuildItem.builder(classNames.toArray(new String[0])).constructors(true).methods(false)
+                        .fields(false).build());
 
         // neither
         reflectiveClass.produce(
