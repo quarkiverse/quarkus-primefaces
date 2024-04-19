@@ -152,20 +152,16 @@ class PrimefacesProcessor {
         // Chart XDev models
         classNames.addAll(collectClassesInPackage(combinedIndex, "software.xdev.chartjs.model"));
 
+        // Exporters
+        classNames.addAll(collectImplementors(combinedIndex, org.primefaces.component.export.Exporter.class.getName()));
+        classNames.addAll(collectImplementors(combinedIndex, org.primefaces.component.export.ExporterOptions.class.getName()));
+        classNames.remove("org.primefaces.component.datatable.export.DataTablePDFExporter");
+        classNames.remove("org.primefaces.component.treetable.export.TreeTablePDFExporter");
+
         // method reflection
         reflectiveClass.produce(
                 ReflectiveClassBuildItem.builder(classNames.toArray(new String[0])).methods(true)
                         .fields(true).build());
-
-        // constructor reflection
-
-        // Exporters
-        classNames.clear();
-        classNames.addAll(collectImplementors(combinedIndex, org.primefaces.component.export.Exporter.class.getName()));
-        classNames.addAll(collectImplementors(combinedIndex, org.primefaces.component.export.ExporterOptions.class.getName()));
-        reflectiveClass.produce(
-                ReflectiveClassBuildItem.builder(classNames.toArray(new String[0])).constructors(true).methods(false)
-                        .fields(false).build());
 
         // neither
         reflectiveClass.produce(
