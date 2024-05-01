@@ -158,7 +158,7 @@ class PrimefacesProcessor {
         classNames.remove(org.primefaces.component.datatable.export.DataTablePDFExporter.class.getName());
         classNames.remove(org.primefaces.component.treetable.export.TreeTablePDFExporter.class.getName());
 
-        // remove in MyFaces 4.0.3
+        // TODO: remove in MyFaces 4.0.3
         classNames.add("org.apache.myfaces.view.facelets.component.RepeatStatus");
 
         // method reflection
