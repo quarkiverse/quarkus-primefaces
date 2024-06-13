@@ -4,7 +4,7 @@
     <parent>
         <groupId>io.quarkiverse.primefaces</groupId>
         <artifactId>quarkus-primefaces-extensions-parent</artifactId>
-        <version>3.14.1</version>
+        <version>999-SNAPSHOT</version>
     </parent>
     <artifactId>quarkus-primefaces-extensions-integration-tests</artifactId>
     <name>Quarkus PrimeFaces Extensions - Integration Tests</name>
