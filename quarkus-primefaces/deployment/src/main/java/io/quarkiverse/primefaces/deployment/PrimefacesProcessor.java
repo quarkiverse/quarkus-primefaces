@@ -62,7 +62,7 @@ class PrimefacesProcessor {
             BuildProducer<NativeImageResourceBundleBuildItem> resourceBundleBuildItem) {
         nativeImageResourceProducer.produce(new NativeImageResourceBuildItem(
                 "META-INF/maven/org.primefaces/primefaces/pom.properties",
-                "META-INF/primefaces-p.taglib.xml",
+                "META-INF/primefaces.taglib.xml",
                 "META-INF/faces-config.xml",
                 "META-INF/web-fragment.xml",
                 "META-INF/web.xml",
