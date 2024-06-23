@@ -52,6 +52,15 @@
       "contributions": [
         "infra"
       ]
+    },
+    {
+      "login": "omasseau",
+      "name": "Olivier Masseau",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11772429?v=4",
+      "profile": "https://github.com/omasseau",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
