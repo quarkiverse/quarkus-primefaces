@@ -86,6 +86,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="http://dennis.gesker.com"><img src="https://avatars.githubusercontent.com/u/6843294?v=4?s=100" width="100px;" alt="Dennis Gesker"/><br /><sub><b>Dennis Gesker</b></sub></a><br /><a href="https://github.com/quarkiverse/quarkus-primefaces/issues?q=author%3Agesker" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://gastaldi.wordpress.com"><img src="https://avatars.githubusercontent.com/u/54133?v=4?s=100" width="100px;" alt="George Gastaldi"/><br /><sub><b>George Gastaldi</b></sub></a><br /><a href="#infra-gastaldi" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/omasseau"><img src="https://avatars.githubusercontent.com/u/11772429?v=4?s=100" width="100px;" alt="Olivier Masseau"/><br /><sub><b>Olivier Masseau</b></sub></a><br /><a href="https://github.com/quarkiverse/quarkus-primefaces/issues?q=author%3Aomasseau" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/nyko29"><img src="https://avatars.githubusercontent.com/u/12033038?v=4?s=100" width="100px;" alt="nyko29"/><br /><sub><b>nyko29</b></sub></a><br /><a href="https://github.com/quarkiverse/quarkus-primefaces/commits?author=nyko29" title="Tests">⚠️</a></td>
     </tr>
   </tbody>
 </table>
