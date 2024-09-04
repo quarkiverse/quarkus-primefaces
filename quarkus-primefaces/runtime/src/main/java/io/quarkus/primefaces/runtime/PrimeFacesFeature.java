@@ -11,8 +11,10 @@ public class PrimeFacesFeature implements Feature {
     public void afterRegistration(AfterRegistrationAccess access) {
         // Barcode component is optional but must register this for native mode since it uses AWT
         RuntimeClassInitialization.initializeAtRunTime(BitmapEncoderRegistry.class.getName());
-        // Charts.js uses SecureRandom
+        // XDEV Charts.js uses SecureRandom
         RuntimeClassInitialization.initializeAtRunTime("software.xdev.chartjs.model.color.Color");
+        RuntimeClassInitialization.initializeAtRunTime("software.xdev.chartjs.model.color.HSLAColor");
+        RuntimeClassInitialization.initializeAtRunTime("software.xdev.chartjs.model.color.RGBAColor");
     }
 
     @Override
