@@ -11,7 +11,7 @@
   <version>999-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Quarkus PrimeFaces Ecosystem</name>
-  <description>PrimeFaces - lets you utilize primefaces and primefaces-extensions make JavaServer Faces (JSF) development so much easier!</description>
+  <description>PrimeFaces - lets you utilize PrimeFaces and PF Extensions to make JavaServer Faces (JSF) development so much easier!</description>
   <modules>
     <module>quarkus-primefaces</module>
     <module>quarkus-primefaces-extensions</module>
