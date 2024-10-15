@@ -10,6 +10,7 @@ import org.primefaces.model.file.CommonsUploadedFile;
 import org.primefaces.util.Constants;
 import org.primefaces.util.PropertyDescriptorResolver;
 
+import io.quarkus.arc.deployment.AdditionalBeanBuildItem;
 import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
 import io.quarkus.deployment.annotations.ExecutionTime;
@@ -156,9 +157,6 @@ class PrimefacesProcessor {
         classNames.addAll(collectImplementors(combinedIndex, org.primefaces.component.export.Exporter.class.getName()));
         classNames.addAll(collectImplementors(combinedIndex, org.primefaces.component.export.ExporterOptions.class.getName()));
 
-        // TODO: remove in MyFaces 4.0.3
-        classNames.add("org.apache.myfaces.view.facelets.component.RepeatStatus");
-
         // method reflection
         reflectiveClass.produce(
                 ReflectiveClassBuildItem.builder(classNames.toArray(new String[0])).methods(true)
@@ -167,6 +165,23 @@ class PrimefacesProcessor {
         // neither
         reflectiveClass.produce(
                 ReflectiveClassBuildItem.builder(org.primefaces.config.PrimeEnvironment.class.getName()).build());
+    }
+
+    // TODO: Remove after MyFaces 4.0.3
+    @BuildStep
+    void temporaryMyFacesStuff(BuildProducer<AdditionalBeanBuildItem> additionalBean,
+            BuildProducer<ReflectiveClassBuildItem> reflectiveClass) {
+        additionalBean.produce(AdditionalBeanBuildItem
+                .unremovableOf(org.apache.myfaces.push.cdi.WebsocketScopeManager.ApplicationScope.class));
+        additionalBean.produce(
+                AdditionalBeanBuildItem.unremovableOf(org.apache.myfaces.push.cdi.WebsocketScopeManager.SessionScope.class));
+        additionalBean.produce(
+                AdditionalBeanBuildItem.unremovableOf(org.apache.myfaces.push.cdi.WebsocketScopeManager.ViewScope.class));
+
+        // TODO: remove in MyFaces 4.0.3
+        reflectiveClass.produce(ReflectiveClassBuildItem.builder("org.apache.myfaces.view.facelets.component.RepeatStatus")
+                .methods(true).fields(true).build());
+
     }
 
     @BuildStep
