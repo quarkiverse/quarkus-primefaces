@@ -184,7 +184,8 @@ class PrimefacesProcessor {
                 .produce(new BeanDefiningAnnotationBuildItem(DotName.createSimple(jakarta.faces.annotation.View.class)));
 
         // TODO: remove in MyFaces 4.0.3
-        reflectiveClass.produce(ReflectiveClassBuildItem.builder("org.apache.myfaces.view.facelets.component.RepeatStatus")
+        reflectiveClass.produce(ReflectiveClassBuildItem
+                .builder("org.apache.myfaces.view.facelets.component.RepeatStatus", "org.apache.myfaces.push.EndpointImpl")
                 .methods(true).fields(true).build());
 
     }

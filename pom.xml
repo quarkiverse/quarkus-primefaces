@@ -23,7 +23,7 @@
     <tag>HEAD</tag>
   </scm>
   <properties>
-    <quarkus.version>3.8.5</quarkus.version>
+    <quarkus.version>3.15.1</quarkus.version>
     <quarkus-poi.version>2.0.6</quarkus-poi.version>
     <quarkus-itext.version>3.1.0</quarkus-itext.version>
     <primefaces.version>14.0.5</primefaces.version>
@@ -113,13 +113,9 @@
           <version>${quarkus.version}</version>
         </plugin>
         <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <configuration>
-            <compilerArgs>
-              <arg>-parameters</arg>
-            </compilerArgs>
-          </configuration>
+          <groupId>io.quarkus</groupId>
+          <artifactId>quarkus-config-doc-maven-plugin</artifactId>
+          <version>${quarkus.version}</version>
         </plugin>
       </plugins>
     </pluginManagement>

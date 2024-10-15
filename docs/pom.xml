@@ -53,8 +53,16 @@
                     </execution>
                 </executions>
             </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
+            <plugin>
+                <groupId>io.quarkus</groupId>
+                <artifactId>quarkus-config-doc-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <targetDirectory>${project.basedir}/modules/ROOT/pages/includes/</targetDirectory>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
                 <executions>
                     <execution>
@@ -66,11 +74,6 @@
                         <configuration>
                             <outputDirectory>${project.basedir}/modules/ROOT/pages/includes/</outputDirectory>
                             <resources>
-                                <resource>
-                                    <directory>${project.basedir}/../target/asciidoc/generated/config/</directory>
-                                    <include>quarkus-primefaces.adoc</include>
-                                    <filtering>false</filtering>
-                                </resource>
                                 <resource>
                                     <directory>${project.basedir}/templates/includes</directory>
                                     <include>attributes.adoc</include>
