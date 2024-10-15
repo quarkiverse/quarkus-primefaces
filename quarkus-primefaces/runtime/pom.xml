@@ -29,8 +29,8 @@
             <version>${quarkus-poi.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.quarkiverse.itext</groupId>
-            <artifactId>quarkus-itext</artifactId>
+            <groupId>io.quarkiverse.openpdf</groupId>
+            <artifactId>quarkus-openpdf</artifactId>
             <version>${quarkus-itext.version}</version>
         </dependency>
         <!-- Sanitizing -->
