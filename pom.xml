@@ -24,7 +24,7 @@
   </scm>
   <properties>
     <quarkus.version>3.15.1</quarkus.version>
-    <quarkus-poi.version>2.0.6</quarkus-poi.version>
+    <quarkus-poi.version>2.1.0</quarkus-poi.version>
     <quarkus-itext.version>3.1.0</quarkus-itext.version>
     <primefaces.version>14.0.6</primefaces.version>
     <primefaces-extensions.version>14.0.6</primefaces-extensions.version>
