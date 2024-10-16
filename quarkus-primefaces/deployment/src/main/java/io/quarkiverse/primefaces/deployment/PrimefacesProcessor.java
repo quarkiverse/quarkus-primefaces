@@ -101,6 +101,12 @@ class PrimefacesProcessor {
 
         // mime types
         resourceBundleBuildItem.produce(new NativeImageResourceBundleBuildItem("mime.cache"));
+
+        // barcodes
+        nativeImageResourceProducer.produce(new NativeImageResourceBuildItem(
+                "org/krysalis/barcode4j/impl/fourstate/usps-4bc-bar-to-character-table.csv"));
+        resourceBundleBuildItem
+                .produce(new NativeImageResourceBundleBuildItem("org/krysalis/barcode4j/impl/code128/EAN128AIs.properties"));
     }
 
     @BuildStep
