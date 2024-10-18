@@ -90,6 +90,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://swailem.org"><img src="https://avatars.githubusercontent.com/u/26059392?v=4?s=100" width="100px;" alt="Rami Swailem"/><br /><sub><b>Rami Swailem</b></sub></a><br /><a href="https://github.com/quarkiverse/quarkus-primefaces/issues?q=author%3Aramiswailem" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/leandro-costa"><img src="https://avatars.githubusercontent.com/u/6432053?v=4?s=100" width="100px;" alt="leandro-costa"/><br /><sub><b>leandro-costa</b></sub></a><br /><a href="https://github.com/quarkiverse/quarkus-primefaces/issues?q=author%3Aleandro-costa" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
 </table>
