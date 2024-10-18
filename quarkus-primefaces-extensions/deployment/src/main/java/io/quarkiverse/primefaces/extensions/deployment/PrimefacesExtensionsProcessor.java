@@ -38,6 +38,7 @@ class PrimefacesExtensionsProcessor {
 
     @BuildStep
     void indexTransitiveDependencies(BuildProducer<IndexDependencyBuildItem> index) {
+        index.produce(new IndexDependencyBuildItem("org.primefaces.extensions", "primefaces-extensions"));
         index.produce(new IndexDependencyBuildItem("org.primefaces.extensions", "resources-monacoeditor"));
         index.produce(new IndexDependencyBuildItem("com.google.code.gson", "gson"));
         index.produce(new IndexDependencyBuildItem("com.googlecode.libphonenumber", "libphonenumber"));
