@@ -70,6 +70,15 @@
       "contributions": [
         "test"
       ]
+    },
+    {
+      "login": "ramiswailem",
+      "name": "Rami Swailem",
+      "avatar_url": "https://avatars.githubusercontent.com/u/26059392?v=4",
+      "profile": "https://swailem.org",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
