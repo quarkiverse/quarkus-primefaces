@@ -25,6 +25,7 @@ import io.quarkus.deployment.builditem.nativeimage.NativeImageResourceBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.NativeImageResourceBundleBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.ReflectiveClassBuildItem;
 import io.quarkus.deployment.pkg.steps.NativeOrNativeSourcesBuild;
+import io.quarkus.logging.Log;
 import io.quarkus.primefaces.runtime.PrimeFacesFeature;
 import io.quarkus.primefaces.runtime.PrimeFacesRecorder;
 import io.quarkus.undertow.deployment.ServletInitParamBuildItem;
@@ -45,11 +46,11 @@ class PrimefacesProcessor {
 
     @BuildStep
     void indexTransitiveDependencies(BuildProducer<IndexDependencyBuildItem> index) {
-        index.produce(new IndexDependencyBuildItem("com.googlecode.owasp-java-html-sanitizer",
-                "owasp-java-html-sanitizer"));
+        index.produce(new IndexDependencyBuildItem("com.googlecode.owasp-java-html-sanitizer", "owasp-java-html-sanitizer"));
         index.produce(new IndexDependencyBuildItem("io.nayuki", "qrcodegen"));
-        index.produce(new IndexDependencyBuildItem("org.primefaces.extensions", "barcode4j-light"));
         index.produce(new IndexDependencyBuildItem("org.overviewproject", "mime-types"));
+        index.produce(new IndexDependencyBuildItem("org.primefaces", "primefaces"));
+        index.produce(new IndexDependencyBuildItem("org.primefaces.extensions", "barcode4j-light"));
         index.produce(new IndexDependencyBuildItem("software.xdev", "chartjs-java-model"));
     }
 
@@ -214,6 +215,7 @@ class PrimefacesProcessor {
                     .toList();
             classes.addAll(packageClasses);
         }
+        Log.debugf("collectClassesInPackage: %s", classes);
         return classes;
     }
 
@@ -234,6 +236,7 @@ class PrimefacesProcessor {
                 .map(ClassInfo::toString)
                 .collect(Collectors.toList());
         classes.add(className);
+        Log.debugf("collectImplementors: %s", classes);
         return classes;
     }
 }
