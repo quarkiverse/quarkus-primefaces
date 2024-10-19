@@ -2,9 +2,7 @@ package io.quarkiverse.primefaces.deployment;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import org.jboss.jandex.ClassInfo;
 import org.jboss.jandex.DotName;
 import org.primefaces.model.file.CommonsUploadedFile;
 import org.primefaces.util.Constants;
@@ -24,13 +22,11 @@ import io.quarkus.deployment.builditem.NativeImageFeatureBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.NativeImageResourceBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.NativeImageResourceBundleBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.ReflectiveClassBuildItem;
-import io.quarkus.deployment.pkg.steps.NativeOrNativeSourcesBuild;
-import io.quarkus.logging.Log;
 import io.quarkus.primefaces.runtime.PrimeFacesFeature;
 import io.quarkus.primefaces.runtime.PrimeFacesRecorder;
 import io.quarkus.undertow.deployment.ServletInitParamBuildItem;
 
-class PrimefacesProcessor {
+class PrimeFacesProcessor extends AbstractJandexProcessor {
 
     private static final String FEATURE = "primefaces";
 
@@ -39,7 +35,7 @@ class PrimefacesProcessor {
         return new FeatureBuildItem(FEATURE);
     }
 
-    @BuildStep(onlyIf = NativeOrNativeSourcesBuild.class)
+    @BuildStep
     NativeImageFeatureBuildItem nativeImageFeature() {
         return new NativeImageFeatureBuildItem(PrimeFacesFeature.class);
     }
@@ -50,7 +46,7 @@ class PrimefacesProcessor {
         index.produce(new IndexDependencyBuildItem("io.nayuki", "qrcodegen"));
         index.produce(new IndexDependencyBuildItem("org.overviewproject", "mime-types"));
         index.produce(new IndexDependencyBuildItem("org.primefaces", "primefaces"));
-        index.produce(new IndexDependencyBuildItem("org.primefaces.extensions", "barcode4j-light"));
+
         index.produce(new IndexDependencyBuildItem("software.xdev", "chartjs-java-model"));
     }
 
@@ -102,12 +98,6 @@ class PrimefacesProcessor {
 
         // mime types
         resourceBundleBuildItem.produce(new NativeImageResourceBundleBuildItem("mime.cache"));
-
-        // barcodes
-        nativeImageResourceProducer.produce(new NativeImageResourceBuildItem(
-                "org/krysalis/barcode4j/impl/fourstate/usps-4bc-bar-to-character-table.csv"));
-        resourceBundleBuildItem
-                .produce(new NativeImageResourceBundleBuildItem("org.krysalis.barcode4j.impl.code128.EAN128AIs"));
     }
 
     @BuildStep
@@ -154,10 +144,6 @@ class PrimefacesProcessor {
         classNames.add(org.primefaces.component.organigram.OrganigramHelper.class.getName());
         classNames.addAll(collectImplementors(combinedIndex, PropertyDescriptorResolver.class.getName()));
 
-        // Barcode
-        classNames.add("javax.imageio.ImageIO");
-        classNames.add(org.krysalis.barcode4j.output.bitmap.ImageIOBitmapEncoder.class.getName());
-
         // Chart XDev models
         classNames.addAll(collectClassesInPackage(combinedIndex, "software.xdev.chartjs.model"));
 
@@ -167,8 +153,7 @@ class PrimefacesProcessor {
 
         // method reflection
         reflectiveClass.produce(
-                ReflectiveClassBuildItem.builder(classNames.toArray(new String[0])).methods(true)
-                        .fields(true).build());
+                ReflectiveClassBuildItem.builder(classNames.toArray(new String[0])).methods().fields().build());
 
         // neither
         reflectiveClass.produce(
@@ -201,42 +186,5 @@ class PrimefacesProcessor {
     void enforceInitParams(BuildProducer<ServletInitParamBuildItem> initParam) {
         // only native uploading is supported no need for Commons FileUpload
         initParam.produce(new ServletInitParamBuildItem(Constants.ContextParams.UPLOADER, "native"));
-    }
-
-    public List<String> collectClassesInPackage(CombinedIndexBuildItem combinedIndex, String packageName) {
-        final List<String> classes = new ArrayList<>();
-        final List<DotName> packages = new ArrayList<>(combinedIndex.getIndex().getSubpackages(packageName));
-        packages.add(DotName.createSimple(packageName));
-        for (DotName aPackage : packages) {
-            final List<String> packageClasses = combinedIndex.getIndex()
-                    .getClassesInPackage(aPackage)
-                    .stream()
-                    .map(ClassInfo::toString)
-                    .toList();
-            classes.addAll(packageClasses);
-        }
-        Log.debugf("collectClassesInPackage: %s", classes);
-        return classes;
-    }
-
-    private List<String> collectSubclasses(CombinedIndexBuildItem combinedIndex, String className) {
-        List<String> classes = combinedIndex.getIndex()
-                .getAllKnownSubclasses(DotName.createSimple(className))
-                .stream()
-                .map(ClassInfo::toString)
-                .collect(Collectors.toList());
-        classes.add(className);
-        return classes;
-    }
-
-    public List<String> collectImplementors(CombinedIndexBuildItem combinedIndex, String className) {
-        List<String> classes = combinedIndex.getIndex()
-                .getAllKnownImplementors(DotName.createSimple(className))
-                .stream()
-                .map(ClassInfo::toString)
-                .collect(Collectors.toList());
-        classes.add(className);
-        Log.debugf("collectImplementors: %s", classes);
-        return classes;
     }
 }
