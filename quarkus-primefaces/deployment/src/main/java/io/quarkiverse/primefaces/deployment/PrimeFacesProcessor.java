@@ -46,7 +46,6 @@ class PrimeFacesProcessor extends AbstractJandexProcessor {
         index.produce(new IndexDependencyBuildItem("io.nayuki", "qrcodegen"));
         index.produce(new IndexDependencyBuildItem("org.overviewproject", "mime-types"));
         index.produce(new IndexDependencyBuildItem("org.primefaces", "primefaces"));
-
         index.produce(new IndexDependencyBuildItem("software.xdev", "chartjs-java-model"));
     }
 
@@ -114,7 +113,6 @@ class PrimeFacesProcessor extends AbstractJandexProcessor {
                 org.primefaces.util.AgentUtils.class.getName(),
                 org.primefaces.util.BeanUtils.class.getName(),
                 org.primefaces.util.CalendarUtils.class.getName(),
-                org.primefaces.util.ChartUtils.class.getName(),
                 org.primefaces.util.ComponentTraversalUtils.class.getName(),
                 org.primefaces.util.ComponentUtils.class.getName(),
                 org.primefaces.util.CompositeUtils.class.getName(),
