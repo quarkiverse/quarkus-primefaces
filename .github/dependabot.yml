@@ -14,21 +14,7 @@ updates:
       - dependency-name: "io.quarkus:quarkus-extension-processor"
       - dependency-name: "io.quarkus:quarkus-maven-plugin"
       - dependency-name: "io.quarkus:quarkus-extension-maven-plugin"
-    groups:
-      quarkus:
-        patterns:
-          - "io.quarkus*"
-          - "quarkus*"
-      quarkiverse:
-        patterns:
-          - "io.quarkiverse*"
-      dependencies:
-        patterns:
-          - "*"
-        exclude-patterns:
-          - "io.quarkus*"
-          - "quarkus*"
-          - "io.quarkiverse*"
+      - dependency-name: "io.quarkus:quarkus-config-doc-maven-plugin"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
