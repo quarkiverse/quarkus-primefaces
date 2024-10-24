@@ -23,7 +23,7 @@
     <tag>HEAD</tag>
   </scm>
   <properties>
-    <quarkus.version>3.15.1</quarkus.version>
+    <quarkus.version>3.16.0</quarkus.version>
     <quarkus-poi.version>2.1.0</quarkus-poi.version>
     <quarkus-itext.version>3.1.1</quarkus-itext.version>
     <primefaces.version>14.0.6</primefaces.version>
