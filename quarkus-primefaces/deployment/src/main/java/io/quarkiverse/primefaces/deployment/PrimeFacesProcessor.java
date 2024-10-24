@@ -131,19 +131,11 @@ class PrimeFacesProcessor extends AbstractJandexProcessor {
                 org.primefaces.util.SecurityUtils.class.getName(),
                 PropertyDescriptorResolver.DefaultResolver.class.getName()));
 
-        // All models
-        List<String> models = collectClassesInPackage(combinedIndex, "org.primefaces.model");
-        models.remove(CommonsUploadedFile.class.getName());
-        classNames.addAll(models);
-
         // components that need special treatment
         classNames.add(org.primefaces.component.fileupload.NativeFileUploadDecoder.class.getName());
         classNames.add(org.primefaces.application.exceptionhandler.ExceptionInfo.class.getName());
         classNames.add(org.primefaces.component.organigram.OrganigramHelper.class.getName());
         classNames.addAll(collectImplementors(combinedIndex, PropertyDescriptorResolver.class.getName()));
-
-        // Chart XDev models
-        classNames.addAll(collectClassesInPackage(combinedIndex, "software.xdev.chartjs.model"));
 
         // Exporters
         classNames.addAll(collectImplementors(combinedIndex, org.primefaces.component.export.Exporter.class.getName()));
@@ -156,6 +148,27 @@ class PrimeFacesProcessor extends AbstractJandexProcessor {
         // neither
         reflectiveClass.produce(
                 ReflectiveClassBuildItem.builder(org.primefaces.config.PrimeEnvironment.class.getName()).build());
+    }
+
+    @BuildStep
+    @Record(ExecutionTime.STATIC_INIT)
+    void registerForSerialization(PrimeFacesRecorder recorder, BuildProducer<ReflectiveClassBuildItem> reflectiveClass,
+            CombinedIndexBuildItem combinedIndex) {
+        // All models
+        final List<String> models = collectClassesInPackage(combinedIndex, "org.primefaces.model");
+        models.remove(CommonsUploadedFile.class.getName());
+        final List<String> classNames = new ArrayList<>(models);
+
+        // Chart XDev models
+        classNames.addAll(collectClassesInPackage(combinedIndex, "software.xdev.chartjs.model"));
+
+        // PrimeFaces
+        classNames.add(org.primefaces.component.api.SavedState.class.getName());
+        classNames.add(org.primefaces.component.api.UITableState.class.getName());
+
+        // serialization reflection
+        reflectiveClass.produce(
+                ReflectiveClassBuildItem.builder(classNames.toArray(new String[0])).methods().fields().serialization().build());
     }
 
     // TODO: Remove after MyFaces 4.0.3
@@ -175,9 +188,20 @@ class PrimeFacesProcessor extends AbstractJandexProcessor {
 
         // TODO: remove in MyFaces 4.0.3
         reflectiveClass.produce(ReflectiveClassBuildItem
-                .builder("org.apache.myfaces.view.facelets.component.RepeatStatus", "org.apache.myfaces.push.EndpointImpl")
-                .methods(true).fields(true).build());
-
+                .builder("org.apache.myfaces.view.facelets.component.RepeatStatus",
+                        "org.apache.myfaces.push.EndpointImpl",
+                        "jakarta.faces.component._AttachedStateWrapper",
+                        "jakarta.faces.component._DeltaStateHelper",
+                        "jakarta.faces.component._DeltaStateHelper$InternalMap",
+                        "jakarta.faces.context._MyFacesExternalContextHelper",
+                        "jakarta.faces.component._AttachedDeltaWrapper",
+                        "java.util.Collections$EmptySet",
+                        java.lang.StringBuilder.class.getName(),
+                        jakarta.el.Expression.class.getName(),
+                        jakarta.el.ValueExpression.class.getName(),
+                        jakarta.faces.view.Location.class.getName(),
+                        org.apache.myfaces.view.facelets.tag.faces.FaceletState.class.getName())
+                .methods().fields().serialization().build());
     }
 
     @BuildStep
