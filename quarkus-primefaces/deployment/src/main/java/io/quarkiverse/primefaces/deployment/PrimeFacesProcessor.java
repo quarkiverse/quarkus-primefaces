@@ -10,6 +10,7 @@ import org.primefaces.util.PropertyDescriptorResolver;
 
 import io.quarkus.arc.deployment.AdditionalBeanBuildItem;
 import io.quarkus.arc.deployment.BeanDefiningAnnotationBuildItem;
+import io.quarkus.deployment.IsNormal;
 import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
 import io.quarkus.deployment.annotations.ExecutionTime;
@@ -22,6 +23,7 @@ import io.quarkus.deployment.builditem.NativeImageFeatureBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.NativeImageResourceBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.NativeImageResourceBundleBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.ReflectiveClassBuildItem;
+import io.quarkus.deployment.pkg.builditem.UberJarMergedResourceBuildItem;
 import io.quarkus.primefaces.runtime.PrimeFacesFeature;
 import io.quarkus.primefaces.runtime.PrimeFacesRecorder;
 import io.quarkus.undertow.deployment.ServletInitParamBuildItem;
@@ -53,6 +55,26 @@ class PrimeFacesProcessor extends AbstractJandexProcessor {
     void produceApplicationArchiveMarker(
             BuildProducer<AdditionalApplicationArchiveMarkerBuildItem> additionalArchiveMarkers) {
         additionalArchiveMarkers.produce(new AdditionalApplicationArchiveMarkerBuildItem("org/primefaces/component"));
+    }
+
+    /**
+     * Produces `UberJarMergedResourceBuildItem`s for each specified service file to be included in the Uber JAR.
+     * <p>
+     * This build step is only executed in "normal" mode and registers each of the listed services in
+     * the `META-INF/services` directory.
+     *
+     * @param producer The build item producer for creating `UberJarMergedResourceBuildItem` instances.
+     */
+    @BuildStep(onlyIf = IsNormal.class)
+    void uberJarServiceLoaders(BuildProducer<UberJarMergedResourceBuildItem> producer) {
+        List<String> serviceFiles = List.of(
+                "org.primefaces.component.fileupload.FileUploadDecoder",
+                "org.primefaces.util.PropertyDescriptorResolver",
+                "org.primefaces.virusscan.VirusScanner");
+
+        for (String serviceFile : serviceFiles) {
+            producer.produce(new UberJarMergedResourceBuildItem("META-INF/services/" + serviceFile));
+        }
     }
 
     @BuildStep
