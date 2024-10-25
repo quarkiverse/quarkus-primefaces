@@ -200,6 +200,7 @@ class PrimeFacesProcessor extends AbstractJandexProcessor {
                         jakarta.el.Expression.class.getName(),
                         jakarta.el.ValueExpression.class.getName(),
                         jakarta.faces.view.Location.class.getName(),
+                        org.apache.myfaces.view.ViewScopeProxyMap.class.getName(),
                         org.apache.myfaces.view.facelets.tag.faces.FaceletState.class.getName())
                 .methods().fields().serialization().build());
     }
