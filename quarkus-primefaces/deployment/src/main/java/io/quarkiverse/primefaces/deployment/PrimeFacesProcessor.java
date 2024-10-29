@@ -67,12 +67,13 @@ class PrimeFacesProcessor extends AbstractJandexProcessor {
     @BuildStep(onlyIf = IsNormal.class)
     void uberJarServiceLoaders(BuildProducer<UberJarMergedResourceBuildItem> producer) {
         List<String> serviceFiles = List.of(
-                "org.primefaces.component.fileupload.FileUploadDecoder",
-                "org.primefaces.util.PropertyDescriptorResolver",
-                "org.primefaces.virusscan.VirusScanner");
+                "services/org.primefaces.component.fileupload.FileUploadDecoder",
+                "services/org.primefaces.util.PropertyDescriptorResolver",
+                "services/org.primefaces.virusscan.VirusScanner",
+                "maven/org.json/json/pom.properties");
 
         for (String serviceFile : serviceFiles) {
-            producer.produce(new UberJarMergedResourceBuildItem("META-INF/services/" + serviceFile));
+            producer.produce(new UberJarMergedResourceBuildItem("META-INF/" + serviceFile));
         }
     }
 
