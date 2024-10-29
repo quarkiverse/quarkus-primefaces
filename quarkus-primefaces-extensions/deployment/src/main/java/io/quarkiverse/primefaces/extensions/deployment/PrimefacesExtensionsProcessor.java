@@ -82,12 +82,9 @@ class PrimefacesExtensionsProcessor {
     void registerForReflection(PrimeFacesExtensionsRecorder recorder,
             BuildProducer<ReflectiveClassBuildItem> reflectiveClass,
             CombinedIndexBuildItem combinedIndex) {
-        final List<String> classNames = new ArrayList<>();
         // All utilities
-        classNames.addAll(collectClassesInPackage(combinedIndex, "org.primefaces.extensions.util"));
-
-        // All models
-        classNames.addAll(collectClassesInPackage(combinedIndex, "org.primefaces.extensions.model"));
+        final List<String> classNames = new ArrayList<>(
+                collectClassesInPackage(combinedIndex, "org.primefaces.extensions.util"));
 
         // Monaco Editor
         classNames.add(java.util.Locale.class.getName());
@@ -100,6 +97,21 @@ class PrimefacesExtensionsProcessor {
         // neither
         reflectiveClass.produce(ReflectiveClassBuildItem.builder(
                 org.primefaces.extensions.config.PrimeExtensionsEnvironment.class.getName()).build());
+    }
+
+    @BuildStep
+    @Record(ExecutionTime.STATIC_INIT)
+    void registerForSerialization(PrimeFacesExtensionsRecorder recorder,
+            BuildProducer<ReflectiveClassBuildItem> reflectiveClass,
+            CombinedIndexBuildItem combinedIndex) {
+
+        // All models
+        final List<String> classNames = new ArrayList<>(
+                collectClassesInPackage(combinedIndex, "org.primefaces.extensions.model"));
+
+        // serialization reflection
+        reflectiveClass.produce(
+                ReflectiveClassBuildItem.builder(classNames.toArray(new String[0])).methods().fields().serialization().build());
     }
 
     public List<String> collectClassesInPackage(CombinedIndexBuildItem combinedIndex, String packageName) {
