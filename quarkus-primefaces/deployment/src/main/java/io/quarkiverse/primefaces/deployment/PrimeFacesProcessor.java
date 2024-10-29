@@ -70,7 +70,10 @@ class PrimeFacesProcessor extends AbstractJandexProcessor {
                 "services/org.primefaces.component.fileupload.FileUploadDecoder",
                 "services/org.primefaces.util.PropertyDescriptorResolver",
                 "services/org.primefaces.virusscan.VirusScanner",
-                "maven/org.json/json/pom.properties");
+                "maven/org.json/json/pom.properties",
+                "maven/org.json/json/pom.xml",
+                "maven/org.jctools/jctools-core/pom.properties",
+                "maven/org.jctools/jctools-core/pom.xml");
 
         for (String serviceFile : serviceFiles) {
             producer.produce(new UberJarMergedResourceBuildItem("META-INF/" + serviceFile));
