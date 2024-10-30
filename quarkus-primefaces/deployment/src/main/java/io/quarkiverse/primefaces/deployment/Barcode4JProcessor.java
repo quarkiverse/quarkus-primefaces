@@ -21,7 +21,7 @@ public class Barcode4JProcessor extends AbstractJandexProcessor {
 
     @BuildStep
     void indexTransitiveDependencies(BuildProducer<IndexDependencyBuildItem> index) {
-        index.produce(new IndexDependencyBuildItem("org.primefaces.extensions", "barcode4j-light"));
+        index.produce(new IndexDependencyBuildItem("net.sf.barcode4j", "barcode4j"));
     }
 
     @BuildStep
