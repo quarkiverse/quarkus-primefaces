@@ -45,7 +45,6 @@ class PrimeFacesProcessor extends AbstractJandexProcessor {
     @BuildStep
     void indexTransitiveDependencies(BuildProducer<IndexDependencyBuildItem> index) {
         index.produce(new IndexDependencyBuildItem("com.googlecode.owasp-java-html-sanitizer", "owasp-java-html-sanitizer"));
-        index.produce(new IndexDependencyBuildItem("io.nayuki", "qrcodegen"));
         index.produce(new IndexDependencyBuildItem("org.primefaces", "primefaces"));
         index.produce(new IndexDependencyBuildItem("software.xdev", "chartjs-java-model"));
     }
