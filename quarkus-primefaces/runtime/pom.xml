@@ -41,30 +41,14 @@
         </dependency>
         <!-- Barcode -->
         <dependency>
-            <groupId>io.nayuki</groupId>
-            <artifactId>qrcodegen</artifactId>
-            <version>1.8.0</version>
+            <groupId>io.quarkiverse.barcode</groupId>
+            <artifactId>quarkus-barcode4j</artifactId>
+            <version>${quarkus-barcode.version}</version>
         </dependency>
         <dependency>
-            <groupId>net.sf.barcode4j</groupId>
-            <artifactId>barcode4j</artifactId>
-            <version>2.1</version>
-            <scope>compile</scope>
-            <optional>false</optional>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.ant</groupId>
-                    <artifactId>ant</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>avalon-framework</groupId>
-                    <artifactId>avalon-framework-impl</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>commons-cli</groupId>
-                    <artifactId>commons-cli</artifactId>
-                </exclusion>
-            </exclusions>
+            <groupId>io.quarkiverse.barcode</groupId>
+            <artifactId>quarkus-qrcodegen</artifactId>
+            <version>${quarkus-barcode.version}</version>
         </dependency>
         <dependency>
             <groupId>org.graalvm.sdk</groupId>
