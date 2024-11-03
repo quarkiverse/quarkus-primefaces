@@ -63,6 +63,7 @@ class PrimefacesExtensionsProcessor {
         nativeImageResourceProducer.produce(new NativeImageResourceBuildItem(
                 "META-INF/maven/org.primefaces.extensions/primefaces-extensions/pom.properties",
                 "META-INF/primefaces-extensions.taglib.xml",
+                "META-INF/primefaces-extensions.urn.taglib.xml",
                 "META-INF/faces-config.xml",
                 "META-INF/LICENSE.txt",
                 "META-INF/NOTICE.txt"));
