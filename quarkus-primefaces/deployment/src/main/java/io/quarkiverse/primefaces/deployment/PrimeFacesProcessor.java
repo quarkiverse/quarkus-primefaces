@@ -3,13 +3,10 @@ package io.quarkiverse.primefaces.deployment;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jboss.jandex.DotName;
 import org.primefaces.model.file.CommonsUploadedFile;
 import org.primefaces.util.Constants;
 import org.primefaces.util.PropertyDescriptorResolver;
 
-import io.quarkus.arc.deployment.AdditionalBeanBuildItem;
-import io.quarkus.arc.deployment.BeanDefiningAnnotationBuildItem;
 import io.quarkus.deployment.IsNormal;
 import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
@@ -191,40 +188,6 @@ class PrimeFacesProcessor extends AbstractJandexProcessor {
         // serialization reflection
         reflectiveClass.produce(
                 ReflectiveClassBuildItem.builder(classNames.toArray(new String[0])).methods().fields().serialization().build());
-    }
-
-    // TODO: Remove after MyFaces 4.0.3
-    @BuildStep
-    void temporaryMyFacesStuff(BuildProducer<AdditionalBeanBuildItem> additionalBean,
-            BuildProducer<BeanDefiningAnnotationBuildItem> beanDefiningAnnotation,
-            BuildProducer<ReflectiveClassBuildItem> reflectiveClass) {
-        additionalBean.produce(AdditionalBeanBuildItem
-                .unremovableOf(org.apache.myfaces.push.cdi.WebsocketScopeManager.ApplicationScope.class));
-        additionalBean.produce(
-                AdditionalBeanBuildItem.unremovableOf(org.apache.myfaces.push.cdi.WebsocketScopeManager.SessionScope.class));
-        additionalBean.produce(
-                AdditionalBeanBuildItem.unremovableOf(org.apache.myfaces.push.cdi.WebsocketScopeManager.ViewScope.class));
-
-        beanDefiningAnnotation
-                .produce(new BeanDefiningAnnotationBuildItem(DotName.createSimple(jakarta.faces.annotation.View.class)));
-
-        // TODO: remove in MyFaces 4.0.3
-        reflectiveClass.produce(ReflectiveClassBuildItem
-                .builder("org.apache.myfaces.view.facelets.component.RepeatStatus",
-                        "org.apache.myfaces.push.EndpointImpl",
-                        "jakarta.faces.component._AttachedStateWrapper",
-                        "jakarta.faces.component._DeltaStateHelper",
-                        "jakarta.faces.component._DeltaStateHelper$InternalMap",
-                        "jakarta.faces.context._MyFacesExternalContextHelper",
-                        "jakarta.faces.component._AttachedDeltaWrapper",
-                        "java.util.Collections$EmptySet",
-                        java.lang.StringBuilder.class.getName(),
-                        jakarta.el.Expression.class.getName(),
-                        jakarta.el.ValueExpression.class.getName(),
-                        jakarta.faces.view.Location.class.getName(),
-                        org.apache.myfaces.view.ViewScopeProxyMap.class.getName(),
-                        org.apache.myfaces.view.facelets.tag.faces.FaceletState.class.getName())
-                .methods().fields().serialization().build());
     }
 
     @BuildStep
