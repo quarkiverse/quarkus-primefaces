@@ -29,7 +29,7 @@
     <quarkus-itext.version>3.1.2</quarkus-itext.version>
     <primefaces.version>14.0.6</primefaces.version>
     <primefaces-extensions.version>14.0.6</primefaces-extensions.version>
-    <myfaces.version>4.0.2</myfaces.version>
+    <myfaces.version>4.1.0-RC3</myfaces.version>
     <maven.compiler.release>17</maven.compiler.release>
   </properties>
   <dependencyManagement>
