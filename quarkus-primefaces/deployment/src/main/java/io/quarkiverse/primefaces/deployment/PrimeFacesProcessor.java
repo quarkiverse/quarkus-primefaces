@@ -86,6 +86,7 @@ class PrimeFacesProcessor extends AbstractJandexProcessor {
         nativeImageResourceProducer.produce(new NativeImageResourceBuildItem(
                 "META-INF/maven/org.primefaces/primefaces/pom.properties",
                 "META-INF/primefaces.taglib.xml",
+                "META-INF/primefaces.urn.taglib.xml",
                 "META-INF/faces-config.xml",
                 "META-INF/web-fragment.xml",
                 "META-INF/web.xml",
