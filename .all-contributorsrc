@@ -116,6 +116,15 @@
         "bug",
         "code"
       ]
+    },
+    {
+      "login": "tmulle",
+      "name": "tmulle",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5183186?v=4",
+      "profile": "https://github.com/tmulle",
+      "contributions": [
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
