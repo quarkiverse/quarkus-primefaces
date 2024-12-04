@@ -11,7 +11,7 @@ public class PrimeFacesFeature implements Feature {
         RuntimeClassInitialization.initializeAtRunTime("software.xdev.chartjs.model.color.Color");
         RuntimeClassInitialization.initializeAtRunTime("software.xdev.chartjs.model.color.HSLAColor");
         RuntimeClassInitialization.initializeAtRunTime("software.xdev.chartjs.model.color.RGBAColor");
-        RuntimeClassInitialization.initializeAtRunTime(org.primefaces.util.ChartUtils.class.getName());
+        RuntimeClassInitialization.initializeAtRunTime(com.apptasticsoftware.rssreader.AbstractRssReader.class.getName());
     }
 
     @Override
