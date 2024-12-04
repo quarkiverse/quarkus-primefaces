@@ -23,12 +23,12 @@
     <tag>HEAD</tag>
   </scm>
   <properties>
-    <quarkus.version>3.15.1</quarkus.version>
-    <quarkus-barcode.version>0.0.3</quarkus-barcode.version>
+    <quarkus.version>3.15.2</quarkus.version>
+    <quarkus-barcode.version>1.0.0</quarkus-barcode.version>
     <quarkus-poi.version>2.1.1</quarkus-poi.version>
     <quarkus-itext.version>3.1.2</quarkus-itext.version>
-    <primefaces.version>14.0.8</primefaces.version>
-    <primefaces-extensions.version>14.0.8</primefaces-extensions.version>
+    <primefaces.version>15.0.0-RC1</primefaces.version>
+    <primefaces-extensions.version>15.0.0-RC1</primefaces-extensions.version>
     <myfaces.version>4.1.0-RC3</myfaces.version>
     <maven.compiler.release>17</maven.compiler.release>
   </properties>
@@ -78,12 +78,6 @@
         <groupId>io.quarkiverse.playwright</groupId>
         <artifactId>quarkus-playwright</artifactId>
         <version>2.0.0</version>
-        <scope>test</scope>
-      </dependency>
-      <dependency>
-        <groupId>net.sourceforge.htmlunit</groupId>
-        <artifactId>htmlunit</artifactId>
-        <version>2.70.0</version>
         <scope>test</scope>
       </dependency>
       <dependency>

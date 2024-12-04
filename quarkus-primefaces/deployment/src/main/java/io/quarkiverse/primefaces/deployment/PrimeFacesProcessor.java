@@ -3,7 +3,6 @@ package io.quarkiverse.primefaces.deployment;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.primefaces.model.file.CommonsUploadedFile;
 import org.primefaces.util.Constants;
 import org.primefaces.util.PropertyDescriptorResolver;
 
@@ -23,7 +22,6 @@ import io.quarkus.deployment.builditem.nativeimage.ReflectiveClassBuildItem;
 import io.quarkus.deployment.pkg.builditem.UberJarMergedResourceBuildItem;
 import io.quarkus.primefaces.runtime.PrimeFacesFeature;
 import io.quarkus.primefaces.runtime.PrimeFacesRecorder;
-import io.quarkus.undertow.deployment.ServletInitParamBuildItem;
 
 class PrimeFacesProcessor extends AbstractJandexProcessor {
 
@@ -44,6 +42,8 @@ class PrimeFacesProcessor extends AbstractJandexProcessor {
         index.produce(new IndexDependencyBuildItem("com.googlecode.owasp-java-html-sanitizer", "owasp-java-html-sanitizer"));
         index.produce(new IndexDependencyBuildItem("org.primefaces", "primefaces"));
         index.produce(new IndexDependencyBuildItem("software.xdev", "chartjs-java-model"));
+        index.produce(new IndexDependencyBuildItem("com.apptasticsoftware", "rssreader"));
+
     }
 
     @BuildStep
@@ -101,10 +101,13 @@ class PrimeFacesProcessor extends AbstractJandexProcessor {
         resourceBundleBuildItem.produce(new NativeImageResourceBundleBuildItem("org.primefaces.Messages_fa"));
         resourceBundleBuildItem.produce(new NativeImageResourceBundleBuildItem("org.primefaces.Messages_fr"));
         resourceBundleBuildItem.produce(new NativeImageResourceBundleBuildItem("org.primefaces.Messages_hi"));
+        resourceBundleBuildItem.produce(new NativeImageResourceBundleBuildItem("org.primefaces.Messages_hr"));
         resourceBundleBuildItem.produce(new NativeImageResourceBundleBuildItem("org.primefaces.Messages_in"));
         resourceBundleBuildItem.produce(new NativeImageResourceBundleBuildItem("org.primefaces.Messages_it"));
+        resourceBundleBuildItem.produce(new NativeImageResourceBundleBuildItem("org.primefaces.Messages_ja"));
         resourceBundleBuildItem.produce(new NativeImageResourceBundleBuildItem("org.primefaces.Messages_ka"));
         resourceBundleBuildItem.produce(new NativeImageResourceBundleBuildItem("org.primefaces.Messages_ko"));
+        resourceBundleBuildItem.produce(new NativeImageResourceBundleBuildItem("org.primefaces.Messages_lt"));
         resourceBundleBuildItem.produce(new NativeImageResourceBundleBuildItem("org.primefaces.Messages_lv"));
         resourceBundleBuildItem.produce(new NativeImageResourceBundleBuildItem("org.primefaces.Messages_nl"));
         resourceBundleBuildItem.produce(new NativeImageResourceBundleBuildItem("org.primefaces.Messages_no"));
@@ -175,7 +178,6 @@ class PrimeFacesProcessor extends AbstractJandexProcessor {
             CombinedIndexBuildItem combinedIndex) {
         // All models
         final List<String> models = collectClassesInPackage(combinedIndex, "org.primefaces.model");
-        models.remove(CommonsUploadedFile.class.getName());
         final List<String> classNames = new ArrayList<>(models);
 
         // Chart XDev models
@@ -188,11 +190,5 @@ class PrimeFacesProcessor extends AbstractJandexProcessor {
         // serialization reflection
         reflectiveClass.produce(
                 ReflectiveClassBuildItem.builder(classNames.toArray(new String[0])).methods().fields().serialization().build());
-    }
-
-    @BuildStep
-    void enforceInitParams(BuildProducer<ServletInitParamBuildItem> initParam) {
-        // only native uploading is supported no need for Commons FileUpload
-        initParam.produce(new ServletInitParamBuildItem(Constants.ContextParams.UPLOADER, "native"));
     }
 }
