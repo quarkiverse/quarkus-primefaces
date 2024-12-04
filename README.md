@@ -62,9 +62,6 @@ For example:
 | ![3.14.x](https://img.shields.io/maven-central/v/io.quarkiverse.primefaces/quarkus-primefaces?versionPrefix=3.14&color=cyan) | Quarkus 3 (EE10), PrimeFaces 14 |
 | ![3.15.x](https://img.shields.io/maven-central/v/io.quarkiverse.primefaces/quarkus-primefaces?versionPrefix=3.15&color=cyan) | Quarkus 3 (EE10), PrimeFaces 15 |
 
-> [!IMPORTANT]  
-> FeedReader component is not supported in GraalVM Native Image mode due to complexities with their third party library Rome.
-
 ## Showcase
 
 A showcase example using Quarkus Primefaces and Extensions and showing Faces running in the Quarkus environment can be found on
