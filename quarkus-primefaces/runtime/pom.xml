@@ -26,6 +26,10 @@
             <artifactId>primefaces</artifactId>
             <classifier>jakarta</classifier>
         </dependency>
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces-themes</artifactId>
+        </dependency>
         <!-- Data Exporter -->
         <dependency>
             <groupId>io.quarkiverse.poi</groupId>
