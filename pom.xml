@@ -64,6 +64,11 @@
         <classifier>jakarta</classifier>
       </dependency>
       <dependency>
+        <groupId>org.primefaces</groupId>
+        <artifactId>primefaces-themes</artifactId>
+        <version>${primefaces.version}</version>
+      </dependency>
+      <dependency>
         <groupId>org.glassfish.expressly</groupId>
         <artifactId>expressly</artifactId>
         <version>5.0.0</version>
