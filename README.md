@@ -69,6 +69,11 @@ the [QuarkusFaces](https://github.com/melloware/quarkus-faces) GitHub repository
 
 [![Quarkus Faces Logo](https://github.com/melloware/quarkus-faces/blob/main/src/site/QuarkusFaces.svg)](https://github.com/melloware/quarkus-faces)
 
+## Quarkus Insights YouTube
+
+***
+[![Quarkus Faces YouTube](http://img.youtube.com/vi/DIN0I56-GR4/0.jpg)](http://www.youtube.com/watch?v=DIN0I56-GR4 "Quarkus Insights 165 What is new with Quarkus JSF")
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
