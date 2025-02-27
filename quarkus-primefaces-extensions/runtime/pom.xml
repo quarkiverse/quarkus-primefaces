@@ -53,7 +53,7 @@
         <dependency>
             <groupId>dev.morphia.morphia</groupId>
             <artifactId>morphia-core</artifactId>
-            <version>2.4.14</version>
+            <version>2.4.15</version>
         </dependency>
         <!-- Localized -->
         <dependency>
