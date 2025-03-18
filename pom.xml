@@ -23,7 +23,7 @@
     <tag>HEAD</tag>
   </scm>
   <properties>
-    <quarkus.version>3.15.2</quarkus.version>
+    <quarkus.version>3.15.4</quarkus.version>
     <quarkus-barcode.version>1.0.0</quarkus-barcode.version>
     <quarkus-poi.version>2.1.1</quarkus-poi.version>
     <quarkus-itext.version>3.1.2</quarkus-itext.version>
