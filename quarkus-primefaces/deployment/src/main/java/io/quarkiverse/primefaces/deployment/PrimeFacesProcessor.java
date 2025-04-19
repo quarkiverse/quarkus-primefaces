@@ -6,6 +6,7 @@ import java.util.List;
 import org.primefaces.util.Constants;
 import org.primefaces.util.PropertyDescriptorResolver;
 
+import io.quarkus.arc.deployment.KnownCompatibleBeanArchiveBuildItem;
 import io.quarkus.deployment.IsNormal;
 import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
@@ -50,6 +51,12 @@ class PrimeFacesProcessor extends AbstractJandexProcessor {
     void produceApplicationArchiveMarker(
             BuildProducer<AdditionalApplicationArchiveMarkerBuildItem> additionalArchiveMarkers) {
         additionalArchiveMarkers.produce(new AdditionalApplicationArchiveMarkerBuildItem("org/primefaces/component"));
+    }
+
+    @BuildStep
+    void produceKnownCompatible(BuildProducer<KnownCompatibleBeanArchiveBuildItem> knownCompatibleProducer) {
+        // bean discovery mode in beans.xml
+        knownCompatibleProducer.produce(new KnownCompatibleBeanArchiveBuildItem("org.primefaces", "primefaces"));
     }
 
     /**

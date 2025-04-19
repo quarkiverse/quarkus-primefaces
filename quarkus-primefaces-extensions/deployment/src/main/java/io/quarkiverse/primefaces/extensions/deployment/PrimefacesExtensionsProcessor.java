@@ -6,6 +6,7 @@ import java.util.List;
 import org.jboss.jandex.ClassInfo;
 import org.jboss.jandex.DotName;
 
+import io.quarkus.arc.deployment.KnownCompatibleBeanArchiveBuildItem;
 import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
 import io.quarkus.deployment.annotations.ExecutionTime;
@@ -53,6 +54,13 @@ class PrimefacesExtensionsProcessor {
             BuildProducer<AdditionalApplicationArchiveMarkerBuildItem> additionalArchiveMarkers) {
         additionalArchiveMarkers
                 .produce(new AdditionalApplicationArchiveMarkerBuildItem("org/primefaces/extensions/component"));
+    }
+
+    @BuildStep
+    void produceKnownCompatible(BuildProducer<KnownCompatibleBeanArchiveBuildItem> knownCompatibleProducer) {
+        // bean discovery mode in beans.xml
+        knownCompatibleProducer
+                .produce(new KnownCompatibleBeanArchiveBuildItem("org.primefaces.extensions", "primefaces-extensions"));
     }
 
     @BuildStep
