@@ -8,7 +8,7 @@
   </parent>
   <groupId>io.quarkiverse.primefaces</groupId>
   <artifactId>quarkus-primefaces-ecosystem</artifactId>
-  <version>3.15.5</version>
+  <version>999-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Quarkus PrimeFaces Ecosystem</name>
   <description>PrimeFaces - lets you utilize PrimeFaces and PF Extensions to make JavaServer Faces (JSF) development so much easier!</description>
@@ -20,7 +20,7 @@
     <connection>scm:git:git@github.com:quarkiverse/quarkus-primefaces.git</connection>
     <developerConnection>scm:git:git@github.com:quarkiverse/quarkus-primefaces.git</developerConnection>
     <url>https://github.com/quarkiverse/quarkus-primefaces</url>
-    <tag>3.15.5</tag>
+    <tag>HEAD</tag>
   </scm>
   <properties>
     <quarkus.version>3.15.4</quarkus.version>
