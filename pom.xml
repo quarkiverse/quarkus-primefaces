@@ -30,7 +30,7 @@
     <primefaces.version>15.0.5</primefaces.version>
     <primefaces-extensions.version>15.0.5</primefaces-extensions.version>
     <myfaces.version>4.1.1</myfaces.version>
-    <maven.compiler.release>17</maven.compiler.release>
+    <maven.compiler.release>21</maven.compiler.release>
   </properties>
   <dependencyManagement>
     <dependencies>
