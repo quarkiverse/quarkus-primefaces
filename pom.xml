@@ -28,7 +28,7 @@
     <quarkus-poi.version>2.1.2</quarkus-poi.version>
     <quarkus-itext.version>3.1.2</quarkus-itext.version>
     <primefaces.version>15.0.8</primefaces.version>
-    <primefaces-extensions.version>15.0.7</primefaces-extensions.version>
+    <primefaces-extensions.version>15.0.8</primefaces-extensions.version>
     <myfaces.version>4.1.1</myfaces.version>
     <maven.compiler.release>21</maven.compiler.release>
   </properties>
