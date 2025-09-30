@@ -25,7 +25,7 @@
   <properties>
     <quarkus.version>3.15.4</quarkus.version>
     <quarkus-barcode.version>1.0.2</quarkus-barcode.version>
-    <quarkus-poi.version>2.1.2</quarkus-poi.version>
+    <quarkus-poi.version>2.1.4</quarkus-poi.version>
     <quarkus-itext.version>3.1.2</quarkus-itext.version>
     <primefaces.version>15.0.8</primefaces.version>
     <primefaces-extensions.version>15.0.8</primefaces-extensions.version>
