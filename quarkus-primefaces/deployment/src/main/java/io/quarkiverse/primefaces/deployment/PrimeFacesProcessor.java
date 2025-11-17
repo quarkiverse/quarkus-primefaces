@@ -23,6 +23,8 @@ import io.quarkus.deployment.builditem.nativeimage.ReflectiveClassBuildItem;
 import io.quarkus.deployment.pkg.builditem.UberJarMergedResourceBuildItem;
 import io.quarkus.primefaces.runtime.PrimeFacesFeature;
 import io.quarkus.primefaces.runtime.PrimeFacesRecorder;
+import io.quarkus.undertow.deployment.ServletInitParamBuildItem;
+import io.quarkus.undertow.deployment.WebMetadataBuildItem;
 
 class PrimeFacesProcessor extends AbstractJandexProcessor {
 
@@ -198,5 +200,16 @@ class PrimeFacesProcessor extends AbstractJandexProcessor {
         // serialization reflection
         reflectiveClass.produce(
                 ReflectiveClassBuildItem.builder(classNames.toArray(new String[0])).methods().fields().serialization().build());
+    }
+
+    @BuildStep
+    void buildMyFacesFix(WebMetadataBuildItem webMetaDataBuildItem,
+            BuildProducer<ServletInitParamBuildItem> initParam) {
+        // MyFaces is throwing an NPE because its NULL
+        if (webMetaDataBuildItem.getWebMetaData() != null && webMetaDataBuildItem.getWebMetaData().getContextParams() == null) {
+            webMetaDataBuildItem.getWebMetaData().setContextParams(new ArrayList<>());
+        }
+        // bogus init param
+        initParam.produce(new ServletInitParamBuildItem("primefaces", "true"));
     }
 }
