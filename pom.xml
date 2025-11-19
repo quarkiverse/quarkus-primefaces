@@ -117,20 +117,5 @@
             </modules>
         </profile>
         -->
-        <profile>
-            <id>skip-docs</id>
-            <activation>
-                <property>
-                    <name>skipDocs</name>
-                </property>
-            </activation>
-
-            <!-- Override docs profile by redefining modules WITHOUT docs -->
-            <modules>
-                <module>quarkus-primefaces</module>
-                <module>quarkus-primefaces-extensions</module>
-                <!-- keep integration-tests if that profile is active -->
-            </modules>
-        </profile>
     </profiles>
 </project>
