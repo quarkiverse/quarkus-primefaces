@@ -22,6 +22,8 @@ import io.quarkus.deployment.builditem.nativeimage.NativeImageResourcePatternsBu
 import io.quarkus.deployment.builditem.nativeimage.ReflectiveClassBuildItem;
 import io.quarkus.primefaces.extensions.runtime.PrimeFacesExtensionsFeature;
 import io.quarkus.primefaces.extensions.runtime.PrimeFacesExtensionsRecorder;
+import io.quarkus.undertow.deployment.ServletInitParamBuildItem;
+import io.quarkus.undertow.deployment.WebMetadataBuildItem;
 
 class PrimefacesExtensionsProcessor {
 
@@ -121,6 +123,17 @@ class PrimefacesExtensionsProcessor {
         // serialization reflection
         reflectiveClass.produce(
                 ReflectiveClassBuildItem.builder(classNames.toArray(new String[0])).methods().fields().serialization().build());
+    }
+
+    @BuildStep
+    void buildMyFacesFix(WebMetadataBuildItem webMetaDataBuildItem,
+            BuildProducer<ServletInitParamBuildItem> initParam) {
+        // MyFaces is throwing an NPE because its NULL
+        if (webMetaDataBuildItem.getWebMetaData() != null && webMetaDataBuildItem.getWebMetaData().getContextParams() == null) {
+            webMetaDataBuildItem.getWebMetaData().setContextParams(new ArrayList<>());
+        }
+        // bogus init param
+        initParam.produce(new ServletInitParamBuildItem("primefaces-extensions", "true"));
     }
 
     public List<String> collectClassesInPackage(CombinedIndexBuildItem combinedIndex, String packageName) {
