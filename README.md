@@ -55,12 +55,13 @@ publish a new version here right after a PrimeFaces release.
 
 For example:
 
-| Version | Explanation |
-| --- | --- |
-| ![2.12.x](https://img.shields.io/maven-central/v/io.quarkiverse.primefaces/quarkus-primefaces?versionPrefix=2.&color=cyan)   | Quarkus 2 (EE08), PrimeFaces 12 |
-| ![3.13.x](https://img.shields.io/maven-central/v/io.quarkiverse.primefaces/quarkus-primefaces?versionPrefix=3.13&color=cyan) | Quarkus 3 (EE10), PrimeFaces 13 |
-| ![3.14.x](https://img.shields.io/maven-central/v/io.quarkiverse.primefaces/quarkus-primefaces?versionPrefix=3.14&color=cyan) | Quarkus 3 (EE10), PrimeFaces 14 |
-| ![3.15.x](https://img.shields.io/maven-central/v/io.quarkiverse.primefaces/quarkus-primefaces?versionPrefix=3.15&color=cyan) | Quarkus 3 (EE10), PrimeFaces 15 |
+| Version | Quarkus Version | Explanation |
+| --- | --- | --- |
+| ![2.12.x](https://img.shields.io/maven-central/v/io.quarkiverse.primefaces/quarkus-primefaces?versionPrefix=2.&color=cyan)   | [![Quarkus](https://img.shields.io/badge/Quarkus-2.0+-purple.svg)](https://github.com/quarkusio/quarkus/releases/tag/2.16.6.Final) | Quarkus 2 (EE08), PrimeFaces 12 |
+| ![3.13.x](https://img.shields.io/maven-central/v/io.quarkiverse.primefaces/quarkus-primefaces?versionPrefix=3.13&color=cyan) | [![Quarkus](https://img.shields.io/badge/Quarkus-3.0+-purple.svg)](https://github.com/quarkusio/quarkus/releases/tag/3.8.0) | Quarkus 3 (EE10), PrimeFaces 13 |
+| ![3.14.x](https://img.shields.io/maven-central/v/io.quarkiverse.primefaces/quarkus-primefaces?versionPrefix=3.14&color=cyan) | [![Quarkus](https://img.shields.io/badge/Quarkus-3.0+-purple.svg)](https://github.com/quarkusio/quarkus/releases/tag/3.8.0) | Quarkus 3 (EE10), PrimeFaces 14 |
+| ![3.15.x](https://img.shields.io/maven-central/v/io.quarkiverse.primefaces/quarkus-primefaces?versionPrefix=3.15&color=cyan) | [![Quarkus](https://img.shields.io/badge/Quarkus-3.15+-purple.svg)](https://github.com/quarkusio/quarkus/releases/tag/3.15.0) | Quarkus 3 (EE10), PrimeFaces 15 |
+| ![4.15.x](https://img.shields.io/maven-central/v/io.quarkiverse.primefaces/quarkus-primefaces?versionPrefix=4.15&color=cyan) | [![Quarkus](https://img.shields.io/badge/Quarkus-3.27+-purple.svg)](https://github.com/quarkusio/quarkus/releases/tag/3.27.0) | Quarkus 3 (EE11), PrimeFaces 15 |
 
 ## Showcase
 
