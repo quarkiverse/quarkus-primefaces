@@ -10,7 +10,7 @@
     <artifactId>quarkus-primefaces-docs</artifactId>
     <name>Quarkus PrimeFaces - Documentation</name>
     <dependencies>
-        <!-- Make sure the doc is built after the other artifacts -->
+        <!-- Make sure the doc is built after the other artifacts 
         <dependency>
             <groupId>io.quarkiverse.primefaces</groupId>
             <artifactId>quarkus-primefaces-deployment</artifactId>
@@ -21,6 +21,7 @@
             <artifactId>quarkus-primefaces-extensions-deployment</artifactId>
             <version>${project.version}</version>
         </dependency>
+		-->
     </dependencies>
     <build>
         <sourceDirectory>modules/ROOT/examples</sourceDirectory>

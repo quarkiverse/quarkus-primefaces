@@ -110,11 +110,9 @@
                     <value>!true</value>
                 </property>
             </activation>
-            <!--
             <modules>
                 <module>docs</module>
             </modules>
-            -->
         </profile>
     </profiles>
 </project>
