@@ -4,7 +4,7 @@
     <parent>
         <groupId>io.quarkiverse.primefaces</groupId>
         <artifactId>quarkus-primefaces-extensions-parent</artifactId>
-        <version>999-SNAPSHOT</version>
+        <version>4.15.12</version>
     </parent>
     <artifactId>quarkus-primefaces-extensions-deployment</artifactId>
     <name>Quarkus PrimeFaces Extensions - Deployment</name>
