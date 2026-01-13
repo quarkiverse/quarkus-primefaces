@@ -41,19 +41,19 @@
         <dependency>
             <groupId>com.googlecode.libphonenumber</groupId>
             <artifactId>libphonenumber</artifactId>
-            <version>9.0.18</version>
+            <version>9.0.21</version>
         </dependency>
         <!-- Sanitizing Converter -->
         <dependency>
             <groupId>com.googlecode.owasp-java-html-sanitizer</groupId>
             <artifactId>owasp-java-html-sanitizer</artifactId>
-            <version>20240325.1</version>
+            <version>20260102.1</version>
         </dependency>
         <!-- Mongo Lazy Datatable -->
         <dependency>
             <groupId>dev.morphia.morphia</groupId>
             <artifactId>morphia-core</artifactId>
-            <version>2.5.1</version>
+            <version>2.5.2</version>
         </dependency>
         <!-- Localized -->
         <dependency>
