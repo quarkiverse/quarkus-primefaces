@@ -3,9 +3,6 @@ package io.quarkiverse.primefaces.deployment;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.primefaces.util.Constants;
-import org.primefaces.util.PropertyDescriptorResolver;
-
 import io.quarkus.arc.deployment.KnownCompatibleBeanArchiveBuildItem;
 import io.quarkus.deployment.IsNormal;
 import io.quarkus.deployment.annotations.BuildProducer;
@@ -141,7 +138,7 @@ class PrimeFacesProcessor extends AbstractJandexProcessor {
                 org.primefaces.clientwindow.PrimeClientWindowUtils.class.getName(),
                 org.primefaces.renderkit.RendererUtils.class.getName(),
                 org.primefaces.seo.JsonLD.class.getName(),
-                Constants.class.getName(),
+                org.primefaces.util.Constants.class.getName(),
                 org.primefaces.util.AgentUtils.class.getName(),
                 org.primefaces.util.BeanUtils.class.getName(),
                 org.primefaces.util.CalendarUtils.class.getName(),
@@ -161,13 +158,14 @@ class PrimeFacesProcessor extends AbstractJandexProcessor {
                 org.primefaces.util.MessageFactory.class.getName(),
                 org.primefaces.util.ResourceUtils.class.getName(),
                 org.primefaces.util.SecurityUtils.class.getName(),
-                PropertyDescriptorResolver.DefaultResolver.class.getName()));
+                org.primefaces.util.PropertyDescriptorResolver.DefaultResolver.class.getName()));
 
         // components that need special treatment
         classNames.add(org.primefaces.component.fileupload.NativeFileUploadDecoder.class.getName());
         classNames.add(org.primefaces.application.exceptionhandler.ExceptionInfo.class.getName());
         classNames.add(org.primefaces.component.organigram.OrganigramHelper.class.getName());
-        classNames.addAll(collectImplementors(combinedIndex, PropertyDescriptorResolver.class.getName()));
+        classNames.addAll(collectImplementors(combinedIndex, org.primefaces.util.PropertyDescriptorResolver.class.getName()));
+        //classNames.addAll(collectImplementors(combinedIndex, org.primefaces.model.filter.FilterConstraint.class.getName()));
 
         // Exporters
         classNames.addAll(collectImplementors(combinedIndex, org.primefaces.component.export.Exporter.class.getName()));
