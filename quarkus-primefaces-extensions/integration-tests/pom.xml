@@ -8,6 +8,7 @@
     </parent>
     <artifactId>quarkus-primefaces-extensions-integration-tests</artifactId>
     <name>Quarkus PrimeFaces Extensions - Integration Tests</name>
+    <packaging>quarkus</packaging>
     <properties>
         <skipITs>true</skipITs>
     </properties>
@@ -28,7 +29,7 @@
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-junit5</artifactId>
+            <artifactId>quarkus-junit</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -47,13 +48,22 @@
             <plugin>
                 <groupId>io.quarkus</groupId>
                 <artifactId>quarkus-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>build</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <extensions>true</extensions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin.version}</version>
+                <configuration>
+                    <parameters>true</parameters>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -73,6 +83,7 @@
                                 <quarkus.http.host>localhost</quarkus.http.host>
                                 <quarkus.http.port>8081</quarkus.http.port>
                             </systemPropertyVariables>
+                            <argLine>@{argLine}</argLine>
                         </configuration>
                     </execution>
                 </executions>
