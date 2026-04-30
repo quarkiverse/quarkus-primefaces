@@ -25,13 +25,13 @@
         <tag>HEAD</tag>
     </scm>
     <properties>
-        <quarkus.version>3.32.2</quarkus.version>
+        <quarkus.version>3.33.1</quarkus.version>
         <quarkus-barcode.version>1.1.0</quarkus-barcode.version>
         <quarkus-poi.version>2.2.1</quarkus-poi.version>
         <quarkus-itext.version>3.3.3</quarkus-itext.version>
         <primefaces.version>15.0.14</primefaces.version>
         <primefaces-extensions.version>15.0.14</primefaces-extensions.version>
-        <myfaces.version>4.1.2</myfaces.version>
+        <myfaces.version>4.1.3-SNAPSHOT</myfaces.version>
         <lombok.version>1.18.46</lombok.version>
         <maven.compiler.plugin.version>3.15.0</maven.compiler.plugin.version>
         <maven.compiler.release>21</maven.compiler.release>
@@ -87,6 +87,17 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+    <repositories>
+        <repository>
+            <id>apache.snapshots</id>
+            <name>Apache Development Snapshot Repository</name>
+            <url>https://repository.apache.org/content/repositories/snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots />
+        </repository>
+    </repositories>
     <build>
         <pluginManagement>
             <plugins>

@@ -2,7 +2,7 @@ package io.quarkiverse.primefaces.deployment;
 
 import java.util.List;
 
-import io.quarkus.deployment.IsNormal;
+import io.quarkus.deployment.IsProduction;
 import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
 import io.quarkus.deployment.builditem.IndexDependencyBuildItem;
@@ -43,7 +43,7 @@ class MimeTypesProcessor extends AbstractJandexProcessor {
      *
      * @param producer the build producer for creating {@link UberJarMergedResourceBuildItem} instances
      */
-    @BuildStep(onlyIf = IsNormal.class)
+    @BuildStep(onlyIf = IsProduction.class)
     void uberJarServiceLoaders(BuildProducer<UberJarMergedResourceBuildItem> producer) {
         List<String> serviceFiles = List.of("java.nio.file.spi.FileTypeDetector");
 
