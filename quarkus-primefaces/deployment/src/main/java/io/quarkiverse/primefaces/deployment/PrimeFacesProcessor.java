@@ -7,7 +7,7 @@ import org.primefaces.util.Constants;
 import org.primefaces.util.PropertyDescriptorResolver;
 
 import io.quarkus.arc.deployment.KnownCompatibleBeanArchiveBuildItem;
-import io.quarkus.deployment.IsNormal;
+import io.quarkus.deployment.IsProduction;
 import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
 import io.quarkus.deployment.annotations.ExecutionTime;
@@ -23,8 +23,6 @@ import io.quarkus.deployment.builditem.nativeimage.ReflectiveClassBuildItem;
 import io.quarkus.deployment.pkg.builditem.UberJarMergedResourceBuildItem;
 import io.quarkus.primefaces.runtime.PrimeFacesFeature;
 import io.quarkus.primefaces.runtime.PrimeFacesRecorder;
-import io.quarkus.undertow.deployment.ServletInitParamBuildItem;
-import io.quarkus.undertow.deployment.WebMetadataBuildItem;
 
 class PrimeFacesProcessor extends AbstractJandexProcessor {
 
@@ -58,7 +56,8 @@ class PrimeFacesProcessor extends AbstractJandexProcessor {
     @BuildStep
     void produceKnownCompatible(BuildProducer<KnownCompatibleBeanArchiveBuildItem> knownCompatibleProducer) {
         // bean discovery mode in beans.xml
-        knownCompatibleProducer.produce(new KnownCompatibleBeanArchiveBuildItem("org.primefaces", "primefaces"));
+        knownCompatibleProducer.produce(KnownCompatibleBeanArchiveBuildItem.builder("org.primefaces", "primefaces")
+                .addReason(KnownCompatibleBeanArchiveBuildItem.Reason.BEANS_XML_ALL).build());
     }
 
     /**
@@ -69,7 +68,7 @@ class PrimeFacesProcessor extends AbstractJandexProcessor {
      *
      * @param producer The build item producer for creating `UberJarMergedResourceBuildItem` instances.
      */
-    @BuildStep(onlyIf = IsNormal.class)
+    @BuildStep(onlyIf = IsProduction.class)
     void uberJarServiceLoaders(BuildProducer<UberJarMergedResourceBuildItem> producer) {
         List<String> serviceFiles = List.of(
                 "services/org.primefaces.component.fileupload.FileUploadDecoder",
@@ -200,16 +199,5 @@ class PrimeFacesProcessor extends AbstractJandexProcessor {
         // serialization reflection
         reflectiveClass.produce(
                 ReflectiveClassBuildItem.builder(classNames.toArray(new String[0])).methods().fields().serialization().build());
-    }
-
-    @BuildStep
-    void buildMyFacesFix(WebMetadataBuildItem webMetaDataBuildItem,
-            BuildProducer<ServletInitParamBuildItem> initParam) {
-        // MyFaces is throwing an NPE because its NULL
-        if (webMetaDataBuildItem.getWebMetaData() != null && webMetaDataBuildItem.getWebMetaData().getContextParams() == null) {
-            webMetaDataBuildItem.getWebMetaData().setContextParams(new ArrayList<>());
-        }
-        // bogus init param
-        initParam.produce(new ServletInitParamBuildItem("primefaces", "true"));
     }
 }
