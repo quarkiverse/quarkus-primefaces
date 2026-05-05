@@ -22,8 +22,6 @@ import io.quarkus.deployment.builditem.nativeimage.NativeImageResourcePatternsBu
 import io.quarkus.deployment.builditem.nativeimage.ReflectiveClassBuildItem;
 import io.quarkus.primefaces.extensions.runtime.PrimeFacesExtensionsFeature;
 import io.quarkus.primefaces.extensions.runtime.PrimeFacesExtensionsRecorder;
-import io.quarkus.undertow.deployment.ServletInitParamBuildItem;
-import io.quarkus.undertow.deployment.WebMetadataBuildItem;
 
 class PrimefacesExtensionsProcessor {
 
@@ -62,7 +60,8 @@ class PrimefacesExtensionsProcessor {
     void produceKnownCompatible(BuildProducer<KnownCompatibleBeanArchiveBuildItem> knownCompatibleProducer) {
         // bean discovery mode in beans.xml
         knownCompatibleProducer
-                .produce(new KnownCompatibleBeanArchiveBuildItem("org.primefaces.extensions", "primefaces-extensions"));
+                .produce(KnownCompatibleBeanArchiveBuildItem.builder("org.primefaces.extensions", "primefaces-extensions")
+                        .addReason(KnownCompatibleBeanArchiveBuildItem.Reason.BEANS_XML_ALL).build());
     }
 
     @BuildStep
@@ -123,17 +122,6 @@ class PrimefacesExtensionsProcessor {
         // serialization reflection
         reflectiveClass.produce(
                 ReflectiveClassBuildItem.builder(classNames.toArray(new String[0])).methods().fields().serialization().build());
-    }
-
-    @BuildStep
-    void buildMyFacesFix(WebMetadataBuildItem webMetaDataBuildItem,
-            BuildProducer<ServletInitParamBuildItem> initParam) {
-        // MyFaces is throwing an NPE because its NULL
-        if (webMetaDataBuildItem.getWebMetaData() != null && webMetaDataBuildItem.getWebMetaData().getContextParams() == null) {
-            webMetaDataBuildItem.getWebMetaData().setContextParams(new ArrayList<>());
-        }
-        // bogus init param
-        initParam.produce(new ServletInitParamBuildItem("primefaces-extensions", "true"));
     }
 
     public List<String> collectClassesInPackage(CombinedIndexBuildItem combinedIndex, String packageName) {
