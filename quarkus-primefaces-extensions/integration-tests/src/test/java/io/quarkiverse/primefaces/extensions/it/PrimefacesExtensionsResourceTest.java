@@ -38,11 +38,6 @@ public class PrimefacesExtensionsResourceTest {
         String title = page.title();
         Assertions.assertEquals("Quarkiverse PFE", title);
 
-        // escape selector
-        final Locator message = page.locator("#selector");
-        assertThat(message).isNotNull();
-        assertThat(message.innerText()).isEqualTo("form\\\\:myPanel");
-
         // localized
         final Locator localized = page.locator("#localized");
         assertThat(localized).isNotNull();

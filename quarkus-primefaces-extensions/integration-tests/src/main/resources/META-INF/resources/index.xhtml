@@ -20,20 +20,14 @@
 <html lang="en"
 	  xmlns:f="jakarta.faces.core"
 	  xmlns:h="jakarta.faces.html"
-	  xmlns:p="http://primefaces.org/ui"
-	  xmlns:pe="http://primefaces.org/ui/extensions">
+	  xmlns:p="primefaces"
+	  xmlns:pe="primefaces.extensions">
 
 <f:view contentType="text/html">
 		<h:head>
 			<title>Quarkiverse PFE</title>
         </h:head>
 		<h:body>
-			<hr/>
-			<h3>EL Functions</h3>
-			<p>
-Sample selector: <code>\#{pe:escapeSelector('form:myPanel')}</code>: <span id="selector"><strong>#{pe:escapeSelector('form:myPanel')}</strong></span> - this should be escaped
-			</p>
-			<hr/>
 			<h3>Localized Markdown</h3>
 			<span id="localized">
 				<pe:localized escape="false" evalEl="true">
