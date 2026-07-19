@@ -62,6 +62,7 @@ For example:
 | ![3.14.x](https://img.shields.io/maven-central/v/io.quarkiverse.primefaces/quarkus-primefaces?versionPrefix=3.14&color=cyan) | [![Quarkus](https://img.shields.io/badge/Quarkus-3.0+-purple.svg)](https://github.com/quarkusio/quarkus/releases/tag/3.8.0) | Quarkus 3 (EE10), PrimeFaces 14 |
 | ![3.15.x](https://img.shields.io/maven-central/v/io.quarkiverse.primefaces/quarkus-primefaces?versionPrefix=3.15&color=cyan) | [![Quarkus](https://img.shields.io/badge/Quarkus-3.15+-purple.svg)](https://github.com/quarkusio/quarkus/releases/tag/3.15.0) | Quarkus 3 (EE10), PrimeFaces 15 |
 | ![4.15.x](https://img.shields.io/maven-central/v/io.quarkiverse.primefaces/quarkus-primefaces?versionPrefix=4.15&color=cyan) | [![Quarkus](https://img.shields.io/badge/Quarkus-3.27+-purple.svg)](https://github.com/quarkusio/quarkus/releases/tag/3.27.0) | Quarkus 3 (EE11), PrimeFaces 15 |
+| ![4.16.x](https://img.shields.io/maven-central/v/io.quarkiverse.primefaces/quarkus-primefaces?versionPrefix=4.16&color=cyan) | [![Quarkus](https://img.shields.io/badge/Quarkus-3.27+-purple.svg)](https://github.com/quarkusio/quarkus/releases/tag/3.33.0) | Quarkus 3 (EE11), PrimeFaces 16 |
 
 ## Showcase
 
