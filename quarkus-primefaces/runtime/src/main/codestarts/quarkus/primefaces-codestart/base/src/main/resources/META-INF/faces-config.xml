@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="https://jakarta.ee/xml/ns/jakartaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-facesconfig_4_0.xsd"
+    version="4.0"
+>
+
+    <application>
+        <!-- PrimeFaces Dialog Framework: required by p:dialog dynamic="true" and PrimeFaces.dialog(). -->
+        <action-listener>org.primefaces.application.DialogActionListener</action-listener>
+        <navigation-handler>org.primefaces.application.DialogNavigationHandler</navigation-handler>
+        <view-handler>org.primefaces.application.DialogViewHandler</view-handler>
+
+        <!-- Exposes #{pfExceptionHandler} to error pages, see error.xhtml and viewExpired.xhtml. -->
+        <el-resolver>org.primefaces.application.exceptionhandler.PrimeExceptionHandlerELResolver</el-resolver>
+
+        <locale-config>
+            <default-locale>en</default-locale>
+        </locale-config>
+    </application>
+
+    <factory>
+        <!-- Redirects unhandled exceptions to the error pages declared in web.xml, also for AJAX requests. -->
+        <exception-handler-factory>org.primefaces.application.exceptionhandler.PrimeExceptionHandlerFactory</exception-handler-factory>
+
+        <!--
+            Uncomment to enable PrimeFaces client windows, which are required by multi view state
+            and p:clientWindow. Be aware that this appends a "jfwid" parameter to every URL and
+            costs one extra redirect on the first request of a session.
+
+        <client-window-factory>org.primefaces.clientwindow.PrimeClientWindowFactory</client-window-factory>
+        -->
+    </factory>
+
+    <!--
+        Uncomment to enable the p:lifecycle component which reports the timing of each Faces phase.
+
+    <lifecycle>
+        <phase-listener>org.primefaces.component.lifecycle.LifecyclePhaseListener</phase-listener>
+    </lifecycle>
+    -->
+
+</faces-config>

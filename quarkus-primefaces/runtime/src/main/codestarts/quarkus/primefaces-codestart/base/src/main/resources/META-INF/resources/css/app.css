@@ -1,0 +1,22 @@
+body {
+    margin: 0;
+}
+
+.app-layout {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.app-card {
+    display: block;
+    margin-bottom: 1.5rem;
+}
+
+.app-card .ui-inputfield {
+    width: 100%;
+}
+
+.app-right {
+    text-align: right;
+}

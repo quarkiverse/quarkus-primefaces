@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:p="http://primefaces.org/ui"
+      lang="#{p:language()}" xml:lang="#{p:language()}">
+
+    <h:head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title><ui:insert name="title">PrimeFaces</ui:insert></title>
+        <h:outputStylesheet name="css/app.css"/>
+        <ui:insert name="head"/>
+    </h:head>
+
+    <h:body>
+        <!-- p:autoUpdate re-renders the growl on every AJAX request without listing it in "update". -->
+        <p:growl id="growl" showDetail="true">
+            <p:autoUpdate/>
+        </p:growl>
+
+        <div class="app-layout">
+            <h2><ui:insert name="title">PrimeFaces</ui:insert></h2>
+            <ui:insert name="content"/>
+        </div>
+    </h:body>
+
+</html>

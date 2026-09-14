@@ -24,6 +24,57 @@ For instance, with Maven, add the following dependency to your POM file:
 </dependency>
 ----
 
+== Getting Started
+
+The extension ships a https://quarkus.io/guides/extension-codestart[Codestart] that scaffolds a
+runnable Faces application, so you do not have to write `web.xml` and `faces-config.xml` by hand.
+
+Using the Quarkus CLI:
+
+[source,bash,subs=attributes+]
+----
+quarkus create app org.acme:primefaces-app --extension=io.quarkiverse.primefaces:quarkus-primefaces:{project-version}
+----
+
+Or with Maven:
+
+[source,bash,subs=attributes+]
+----
+mvn io.quarkus.platform:quarkus-maven-plugin:create \
+    -DprojectGroupId=org.acme -DprojectArtifactId=primefaces-app \
+    -Dextensions=io.quarkiverse.primefaces:quarkus-primefaces:{project-version}
+----
+
+The generated project contains:
+
+[cols="1,2"]
+|===
+|File |Purpose
+
+|`src/main/resources/META-INF/web.xml`
+|Faces servlet mapping, welcome file, error pages and sensible PrimeFaces/MyFaces context parameters, including `primefaces.THEME`.
+
+|`src/main/resources/META-INF/faces-config.xml`
+|The PrimeFaces Dialog Framework, exception handler factory and client window factory.
+
+|`src/main/resources/META-INF/resources/index.xhtml`
+|A sample page with a form, a `p:growl` and a `p:dataTable`.
+
+|`src/main/resources/META-INF/resources/template/layout.xhtml`
+|The Facelets template shared by `index.xhtml`, `error.xhtml` and `viewExpired.xhtml`.
+
+|`src/main/java/org/acme/GreetingBean.java`
+|A `@Named @ViewScoped` backing bean for the sample page.
+|===
+
+NOTE: A Quarkus application is packaged as a jar and not a war, so the descriptors live under
+`META-INF` rather than `WEB-INF`.
+
+Start it with `quarkus dev` and browse to http://localhost:8080/index.xhtml.
+
+TIP: Only `quarkus-primefaces` provides a Codestart. Adding `quarkus-primefaces-extensions` to the
+same command will not generate a second, conflicting set of descriptors.
+
 == Limitations
 
 When creating a GraalVM Native image you may need to change some of your code to be native friendly and some features may not be available to use in Native mode.
