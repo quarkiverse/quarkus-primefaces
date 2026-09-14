@@ -1,0 +1,14 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/template/layout.xhtml">
+
+    <ui:define name="title">Your session has expired</ui:define>
+
+    <ui:define name="content">
+        <p>The page you were on is no longer available because the session expired. Please start over.</p>
+
+        <p:button outcome="/index" value="Go to Homepage" icon="pi pi-home"/>
+    </ui:define>
+
+</ui:composition>

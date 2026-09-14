@@ -1,0 +1,14 @@
+name: primefaces-codestart
+ref: primefaces
+type: code
+tags: extension-codestart
+metadata:
+  title: PrimeFaces
+  description: A ready to run Jakarta Faces application with PrimeFaces, including a pre-configured web.xml, faces-config.xml and a sample index.xhtml page.
+  path: /index.xhtml
+  related-guide-section: https://quarkiverse.github.io/quarkiverse-docs/quarkus-primefaces/dev/
+language:
+  base:
+    data:
+      primefaces:
+        theme: saga-blue

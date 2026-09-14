@@ -1,0 +1,15 @@
+quarkus:
+  # Locales bundled into the native image; add the ones your application actually supports.
+  default-locale: en
+  locales: en
+  http:
+    enable-compression: true
+"%dev":
+  # Faces renders more verbose error pages and skips some caching in Development stage.
+  jakarta:
+    faces:
+      PROJECT_STAGE: Development
+  quarkus:
+    # Restart is cheaper than a full reload when only .xhtml files change.
+    live-reload:
+      instrumentation: true

@@ -1,0 +1,50 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="jakarta.faces.core"
+                xmlns:h="jakarta.faces.html"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/template/layout.xhtml">
+
+    <ui:define name="title">Welcome to PrimeFaces on Quarkus</ui:define>
+
+    <ui:define name="content">
+        <h:form id="form">
+            <p:card styleClass="app-card">
+                <f:facet name="title">Say hello</f:facet>
+
+                <p:outputLabel for="name" value="Your name"/>
+                <p:inputText id="name" value="#{greetingBean.name}" required="true"
+                             requiredMessage="Please tell us your name."
+                             placeholder="Duke"/>
+                <p:message for="name"/>
+
+                <f:facet name="footer">
+                    <p:commandButton value="Greet" action="#{greetingBean.greet}"
+                                     update="@form" icon="pi pi-check"/>
+                </f:facet>
+            </p:card>
+
+            <p:panel header="Cars" toggleable="true" styleClass="app-card">
+                <p:dataTable id="cars" var="car" value="#{greetingBean.cars}"
+                             emptyMessage="No cars found." paginator="true" rows="5"
+                             rowsPerPageTemplate="5,10,15">
+                    <p:column headerText="Year" sortBy="#{car.year}" filterBy="#{car.year}">
+                        <h:outputText value="#{car.year}"/>
+                    </p:column>
+                    <p:column headerText="Brand" sortBy="#{car.brand}" filterBy="#{car.brand}">
+                        <h:outputText value="#{car.brand}"/>
+                    </p:column>
+                    <p:column headerText="Color" sortBy="#{car.color}" filterBy="#{car.color}">
+                        <h:outputText value="#{car.color}"/>
+                    </p:column>
+                    <p:column headerText="Price" sortBy="#{car.price}" styleClass="app-right">
+                        <h:outputText value="#{car.price}">
+                            <f:convertNumber type="currency" currencySymbol="$"/>
+                        </h:outputText>
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
