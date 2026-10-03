@@ -4,7 +4,7 @@
     <parent>
         <groupId>io.quarkiverse</groupId>
         <artifactId>quarkiverse-parent</artifactId>
-        <version>23</version>
+        <version>25</version>
     </parent>
     <groupId>io.quarkiverse.primefaces</groupId>
     <artifactId>quarkus-primefaces-ecosystem</artifactId>
@@ -25,7 +25,7 @@
         <tag>HEAD</tag>
     </scm>
     <properties>
-        <quarkus.version>3.33.1</quarkus.version>
+        <quarkus.version>3.33.4</quarkus.version>
         <quarkus-barcode.version>1.2.0</quarkus-barcode.version>
         <quarkus-poi.version>2.2.1</quarkus-poi.version>
         <quarkus-itext.version>3.3.3</quarkus-itext.version>
