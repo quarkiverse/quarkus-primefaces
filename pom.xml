@@ -26,7 +26,7 @@
     </scm>
     <properties>
         <quarkus.version>3.40.1.2</quarkus.version>
-        <quarkus-barcode.version>1.2.0</quarkus-barcode.version>
+        <quarkus-barcode.version>4.0.0</quarkus-barcode.version>
         <quarkus-poi.version>2.2.3</quarkus-poi.version>
         <quarkus-itext.version>3.3.3</quarkus-itext.version>
         <primefaces.version>16.0.3</primefaces.version>
